@@ -1,2 +1,24 @@
 \section{Introducción}
-
+Comenzemos entonces con una revisión de los conceptos de topología aprendidos en análisis.
+\begin{define}
+	\textbf{Espacio Métrico} Sea $X$ un conjunto y $d$ una métrica que cumple con las siguientes condiciones:
+	\begin{itemize}
+		\item $d(x,y) \geq 0 $ \quad y es $d(x,y) = 0 \leftrightarrow  x = y$
+		\item $d(x,y) = d(y,x) $ Condición de simetría.
+		\item $ d(x,y) \leq d(x,z) + d(z,y) $ Desigualdad triangular.
+	\end{itemize}
+\end{define}
+También recordemos la noción de un conjunto abierto.
+\begin{define}
+	\textbf{Conjunto Abierto} Sea $A \subseteq X$, $A$ es abierto si:
+	\[ 	\forall a \in A \exists \epsilon > 0 \text{ tal que } d(a,x) < \epsilon \implies x \in A \]
+\end{define}
+Otro concepto util, pero al cual trataremos de evitar es el de bolas abiertas.
+\begin{define}
+	\textbf{Bolas Abiertas} denotamos al conjunto de puntos que estan a lo sumo a un epsilon de distancia, via:
+	\begin{align*}
+	B_{\epsilon}(a) = \left\lbrace x \in  X | d(x,a) < \epsilon \right\rbrace
+	\end{align*} %favor hace el newcommand para conjuntos.
+	Observera que todos los puntos son interiores (¡Probar!)
+\end{define}
+Junto con estos conceptos
