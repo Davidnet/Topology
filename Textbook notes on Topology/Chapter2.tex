@@ -1,0 +1,29 @@
+\chapter{Topological Spaces and Continuous Functions}
+\section{Topological Spaces}
+\begin{define}
+	A \textbf{topology} on a set $X$ is a collection $\tau$ of subsets of $X$ having the sollowing properties:
+	\begin{itemize}
+		\item $\emptyset \textrm{ and } X $ are in $\tau$ 
+		\item The union of the elements of any subcollection of $ \tau $ is in $ \tau $
+		\item The intersection of the elements of any finite subcollection of $ \tau $ is in $ \tau $.
+	\end{itemize}
+	A set $ X $ for which a topology $ \tau $ has been specified is called a \textbf{topological space}
+\end{define}
+Properly, a topological space is an ordered pair $ (X, \tau) $.
+
+If $Z$ is a topological space with topology $ \tau $, we say that a subset $U$ of $X$ is an \textbf{open set} of $X$ if $U$ belongs to the collection $ \tau $. 
+
+\begin{exm}
+	If $X$ is any set, the collection of all subsets of $X$ is a topology on $X$; it is called the \textbf{discrete topology}. The collection consisting of $X$ and $\emptyset$ only is also a topology on $X$; we shall call it the \textbf{indiscrete topology}, or the \textbf{trivial topology}
+\end{exm}
+\begin{exm}
+	Let $X$ be a set; let $\tau_f $ be the collection of all subsets of $U$ of $X$ such that $ X-U$ is either finite or is all of $X$. Then $\tau_f$ is a topology on $X$, called the \textbf{finite complement topology}. Both $X$ and $\varnothing$ are in $ \tau_f$, since $ X-X $ is finite and $ X - \varnothing $ is all of $X$. If $ \set{U_\alpha} $ is an indexed family of nonempty elements of $ \tau_f $, to show that $ \cup U_\alpha $ is in $\tau_f$, we compute
+	\begin{align*}
+	(\bigcup U_\alpha)^c = \bigcap U_{\alpha}^c
+	\end{align*}
+	and since each $U^c$ is finite, the union of these set is finite. If $ U_1, \ldots, U_n$ are nonempty elements of $ \tau_f$, to show that $ \cap U_i $ is in $ \tau_f$, er compute:
+	\begin{align*}
+		\lrp{\bigcap_{i=1}^n}^c U_i = \bigcup_{i=1}^n U_i^c
+	\end{align*}
+	Observe then that each $U_i^c $ is finite, and finite union of finite set is finite.
+\end{exm}
