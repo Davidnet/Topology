@@ -1,0 +1,81 @@
+Recordemos entonces la definicion de espacio topologico.
+\begin{define}
+Dados $X$ conjunto y $ \tau \subset P(X) $ es un espacio topologico:
+\begin{itemize}
+	\item $X, \emptyset \in  \tau$
+	\item $A \subset \tau \implies \cup A \in \tau $
+	\item $ A \subset \tau \tau$ y $A$ es finito, implica que la intersecion finita esta en $ \tau $
+\end{itemize}
+\end{define}
+
+\begin{exm}
+	Si $ (X,d) $ es espacio métrico y $ \tau = \set{A \subseteq X | A \textrm{ es abierto}}$, entonce $ (X, \tau) $ es espacio topologico
+\end{exm}
+\begin{exm}
+	Dado $X$, $ \tau_i = \set{\varnothing, X} $ es la topologia indiscreta trivial, o $ \tau_d = P(X) $ es la topologia discreta.
+\end{exm}
+\begin{exm}
+	$ \Sigma $ es una teoría (Axiomas) de primer orden en el lenguaje $L$ (un ejemplo un simbolo de operacion binaria). Sea $X = \set{T | T \textrm{ teoría maximal consistente tal que } \Sigma \subset T} $. Sea $ \phi $ una sentencia (como soy abeliano), se armá un tipico abierto $ [ \phi ] = \set{T \in X | \phi \in T} $, observemos que $ X - [\phi] = \set{T \in X | \phi \not \in T} = [\textrm{NO } \phi]$ -Espacio de Stone-
+\end{exm}
+\begin{exm}
+	Sea un campo $K$, y sea $X = k^n $, veamos la topología de Zariski, los cerrados son $ S \subseteq K[x_1, ..., x_n] $. los cerrados de s $ C_s = {\vec{x} \ in K^n | f(\vec{x})= 0 \forall f \in S} $. Todos los subconjuntos son compactos, 
+\end{exm}
+\begin{exm}
+	Sea $X = \set{f: R \rightarrow R}$, un tipico abierto $ a \in R $, $ U \subseteq R$ abierto en la topología usual. Y armé el siguiente conjunto:
+	\[ Y_{a,U} = \set{f \in X : f(a) \in U} \] Teoria de convergencia puntal.
+\end{exm}
+Veamos que aunque la union de topologias no es topologia,  dos topologias sobre un conjunto, se puede comparar.
+tambien decimos $ \tau_1 \subset \tau 2$ decimos $\tau_1$ es mas gruesa y la otra es fina. Interseccion arbitrarias de topologias, es topologia (Probar!).
+Podemos coger sea $X$ conjunto y $A \subset P(X) $:
+\[ \bigcap\set{\tau \subset P(x) | \tau \textrm{es topología y } A \subset \tau} \] 
+esta es la menor topologia que contiene a $A$ (la mas gruesa?). 
+\begin{exm}
+	ver notas
+\end{exm}
+\begin{define}
+	Un punto aislado es cual el singleton de ese punto es abierto
+\end{define}
+\section{Como construir un a topologia}
+\begin{define}
+	$X$ conjunto, $B \contain P(x) $, $B$ es \textbf{base para una topologí}a sobre $X$ si
+	\[ \set{\bigcup A | A \contain B} \]
+	es topología
+\end{define}
+Esto no puede que no sea topologia, por dos razones os la union no es todo $X$, y que las interseciones finitas no son "abiertas"
+Observar $ B \contain \set{\bigcup A | A \contain B} $.
+
+\begin{define}
+	\textbf{Definicion del libro} $X$ conjunto, $ B \contain P(X) $ es una base \ldots si:
+	\[ \forall x \in X \exists b \in B x \in b. (\cup B = x) \]
+	\[ \forall b_1, b_2 \in B \forall x \in b_1 \cap b_2 \exists b \in B \text{ such that } x \in b \contain b_1 \cap b_2 \]
+\end{define}
+
+\begin{thm}
+	Las dos definiciones son equivalentes
+\end{thm}
+
+\begin{proof}
+	$ 6 \implies 7 $  $ b_1, b_2 \in B$, $ x \in b_1 cap b_2$ (ver dibujos), como $ b_1, b_2$ esta en $ \tau$ la interseccion esta en $\tau$ (puede que no este en $B$), pero la interseccion (terminar)   
+	
+	$ 7 \implies 6 $
+\end{proof}
+¿Que quiere decir que un conjunto sea la union de un conjunto?
+
+\begin{thm}
+	Sea \[B = \set{B_\epsilon(x) = x \in X, \epsilon > 0 } \], probar que es una \textbf{topologia base}
+\end{thm}
+Las bolas en un espacio metricos es una base topologica.
+\begin{define}
+	Dado $ (X, \tau) $ un espacio toplogico:
+	\begin{itemize}
+		\item $B \contain \tau$ es base para $\tau $ si $ \forall U \in \tau \forall x \in U \exists b \in B $ t.q $ x \in B \contain U$
+	\end{itemize}
+\end{define}
+Truco si estoy muy de buenas y $B$ es cerrado por intersecion condicion 2 es automaticamente ganada.
+\begin{define}
+	Un $S \contain P(X) $ es subbase si $ \bigcup S = X$
+\end{define}
+\begin{theorem}
+	Si $S$ es subbase entonces $B = \set{ \bigcap A | A \contain S \text{ finitas }} $ es base para una topologia.
+\end{theorem}
+agregar intersecciones finitas y uniones arbitarias.
