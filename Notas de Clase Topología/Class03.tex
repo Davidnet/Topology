@@ -1,0 +1,65 @@
+\section{Orden lineal}
+\begin{define}
+	$ (X, < ) $ es in \textbf{orden lineal } si:
+	\begin{itemize}
+		\item $ x < y ^y < z \implies x < z $
+		\item $ x \not< x$
+		\item $\forall x,y x<y \textrm{ o } y < x \textrm{ o } x =y $ 
+	\end{itemize}
+\end{define}
+
+Dado $ (X, <) $ definimos la topología del orden sobre $ X$ como la generada por:
+
+\[ \set{(- \infty ,x): x \in X} \cup \set{(x, \infty) : x \in X} \]
+
+(Es una subase, (y tal ves podría ser una base, pero muy raramente)). 
+Observar que interseccion finitas de estas cosas es un intervalo. 
+
+\begin{exm}
+	$ \RR_< $ la topolgía del orden coincide con la topologia usual (metrica) $ \RR_{\qt{met}} = \RR $. 
+\end{exm}
+
+\begin{exm}
+	Un par ordenado en el libro esta denotado $ x \times y$, acá los pares ordenados $ \big<x,y\big> < \big<x',y'\big> $ si $ x < x'$ o $ x = x$ y $ y < y'$. Tenemos $ \RR_{\qt{lex}}^2 \neq \RR_{\qt{me}}^2 = \RR^2 $
+\end{exm}
+ 
+ Queremos comparar cual toplogia es mas fina. es decir $ \gothic{B}_{\qt{Usual}} \contain \tau_{\qt{lex}} $
+
+Es mas fina que la usual, esta mas cerca a la topología discreta.
+
+\begin{exm}
+	Tomme: \[  X = \set{\frac{1}{n}:  n \in \ZZ^+} \cap \set{5} \]
+	con el orden usual. Observar que el $=5 $ no esta aislado.
+\end{exm}
+\begin{exm}
+	La doble flecha de Alexandrob.
+\end{exm}
+\begin{define}
+	Un orden lineal $ (X,<)$ es \textbf{un buen orden} si: $ \forall A \contain X \neq $ si $ A \neq \varnothing$ entonces $A$ tiene mínimo, es decir, existe un $m \in A$ tal que para todo $ a \in A$, $ m \leq a$ 
+\end{define}
+Observar que los reales no son un buen orden.
+
+\begin{exm}
+	$ (\mathbb{N}, < ) $ es un buen orden, aqui la topologia es la de singleton abiertos. Tambien puede utilizar $ \mathbb{N} + 1$ que se ve como una linea y un punto. (observar que aqui en este espacio topologico  $ n \rightarrow \omega $) 
+\end{exm}
+\begin{exm}
+	$ \mathbb{N} + \mathbb{N} $. Esto puede verse como la suma de dos lineas de puntos que representan a $\mathbb{N} $. O formalemente: $ (\set{0,1} \times \mathbb{N}, <_{\qt{Lex}} ) $. (Observar aca que en comparación a $ \mathbb{N} + 1 $ es que este es compacto, es homeomorfo a $ \frac{1}{n}$ )
+	El otro ejemplo interesante sería: $ \mathbb{N} \times \mathbb{N} $ con el orden lexicografíco. Este no es compacto.
+	Mientras que $ \mathbb{N} \times \mathbb{N} + 1$ es compacto.
+\end{exm}
+En los buenos ordenes no hay succesiones infinitas de decrecientes.
+\begin{exm}
+	Ver hojas para pintar todos los ordinales ver wikipedia los Ordinales.
+\end{exm}
+Para la casa: Si se tienen dos buenos ordenes, hay una tricotomia: O son isomorfos, o uno es un segmento inicial uno del otro. Entonces cualquier buen orden tiene a los naturales como segmentos inicial.
+
+Ahora vamos a buscar buenos ordenes no enumerables. La construción es un poco díficil.
+Sea:
+\[ s_\Omega = \omega_1 \]
+Es un buen orden tal que:
+\begin{itemize}
+	\item es no enumerable
+	\item $ \forall a \in S_{\Omega} [0 = \qt{min}, a) $ es enumberable.
+	\item Sea $ A \contain S_\Omega$ $A$ enumerable $ \implies A$ es acotado.
+\end{itemize}
+
