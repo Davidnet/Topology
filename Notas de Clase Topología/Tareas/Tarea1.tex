@@ -57,7 +57,7 @@ Usando la ayuda de la definición, queremos observar que pasan dos cosas:
 	y podemos entonces que para que un elemento este en los dos, también esta en el conjunto(m.cm denota el mínimo común múltiplo):
 	
 	\[ S(\qt{ m.c.m } (b,c),a) = \set{a + n\qt{ m.c.m } (b,c) : n \in \ZZ}   \]
-	y claramente $a \in S(b,\qt{ m.c.m } (a,c))  $
+	y claramente $a \in S(a,\qt{ m.c.m } (b,c))  $
 	Por lo tanto observamos que en general, la intersección de elementos base, es base. O lo que se quería observar: Si $a$ pertenece a a intersección de dos elementos básicos $B_1$ y $ B_2$, entonces existe un elemento básico $B_3$ que contiene a $x$ tal que $ B_3 \contained B_1 \cap B_2$.
 \end{enumerate}
 
@@ -65,6 +65,14 @@ Usando la ayuda de la definición, queremos observar que pasan dos cosas:
 \textbf{2.} Muéstrese que la topología discreta sobre $\tau_f$ no es la usual topología discreta sobre $\ZZ$. Mas aún, muestre que ningún conjunto finito $ A \contained Z$ es abierto.
 
 \textbf{Solución}
+Para resolver esta pregunta, la reformularemos en el siguiente lema:
+\begin{lem}
+	Sea $A \contained \ZZ $  y $A \neq \varnothing$ un conjunto finito, en la topología $\tau_f$, $A$ no es abierto.
+\end{lem}
+\begin{proof}(\emph{Peligro: Una línea.})
+	Observamos que como cualquier abierto diferente de $ \varnothing$ contiene una secuencia de números enteros infinitos, para un $A$ finito, es decir, $A$ que contiene finitos números enteros no va tener una secuencia infinita de números enteros, por lo tanto concluimos que ningún subconjunto finito es un abierto en $ (\ZZ, \tau_f) $ 
+\end{proof}
+
 
 \textbf{3.} Muestre que $(\ZZ, \tau_f) $ es un espacio de Hausdorff.
 
