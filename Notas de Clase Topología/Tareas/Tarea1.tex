@@ -1,0 +1,108 @@
+\documentclass[notitlepage]{report}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\author{David Cardozo}
+\title{Prueba de Furstenberg de la infinitud de los primos}
+\newtheorem{define}{Definición}
+\newtheorem{thm}{Teorema}
+\newtheorem{prop}{Proposición}
+\newtheorem{lem}{Lema}
+
+%Customized Commands
+\newcommand{\lrp}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\ZN}[1]{\frac{\mathbb{Z}}{#1 \mathbb{Z}}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\qt}[1]{\textrm{#1}}
+\newcommand{\function}[3]{#1 : #2 \rightarrow #3}
+\newcommand{\contained}{\subseteq}
+\newcommand{\restric}[2]{ #1\restriction_{#2}}
+\newcommand{\divs}{\mid}
+\newcommand{\ndivs}{\nmid}
+
+\begin{document}
+\maketitle
+
+\begin{define}
+	Para cada $a \in \ZZ^+ $ y $b \in \ZZ$ definimos el conjunto $S(a,b) := \set{an + b: n \in \ZZ} \contained \ZZ $
+\end{define}
+\textbf{1.} Pruebe que la colección $ \set{S(a,b) : (a,b) \in \ZZ^+ \times \ZZ} $ es base para una topología.
+
+\textbf{Solución.}
+Usando la ayuda de la definición, queremos observar que pasan dos cosas:
+\begin{enumerate}
+	\item Para cada $x \in \ZZ$, existe por lo menos un elemento básico $B$ que contiene a $x$
+	
+	Nótese entonces que $ b \in S(a,b) $ para todo $a \in \ZZ^+$. Por lo tanto esta condición es cumplida.
+	
+	\item Si $a$ pertenece a a intersección de dos elementos básicos $B_1$ y $ B_2$, entonces existe un elemento básico $B_3$ que contiene a $x$ tal que $ B_3 \contained B_1 \cap B_2$
+	
+	En general, obsérvese que sea $a$ un elemento que pertenece a ambos $S(b,a)$ y $S(c,a) $, tenemos que:
+	\begin{align*}
+	S(b,a) &= \set{bn + a: n \in \ZZ} \\
+	S(c,a) &= \set{cn + a: n \in \ZZ}
+	\end{align*}
+	y podemos entonces que para que un elemento este en los dos, también esta en el conjunto(m.cm denota el mínimo común múltiplo):
+	
+	\[ S(\qt{ m.c.m } (b,c),a) = \set{a + n\qt{ m.c.m } (b,c) : n \in \ZZ}   \]
+	y claramente $a \in S(b,\qt{ m.c.m } (a,c))  $
+	Por lo tanto observamos que en general, la intersección de elementos base, es base. O lo que se quería observar: Si $a$ pertenece a a intersección de dos elementos básicos $B_1$ y $ B_2$, entonces existe un elemento básico $B_3$ que contiene a $x$ tal que $ B_3 \contained B_1 \cap B_2$.
+\end{enumerate}
+
+
+\textbf{2.} Muéstrese que la topología discreta sobre $\tau_f$ no es la usual topología discreta sobre $\ZZ$. Mas aún, muestre que ningún conjunto finito $ A \contained Z$ es abierto.
+
+\textbf{Solución}
+
+\textbf{3.} Muestre que $(\ZZ, \tau_f) $ es un espacio de Hausdorff.
+
+\textbf{Solución} (\emph{Peligro: Una línea.}) Observar que para $b,c \in \ZZ$ y suponer que $n \ndivs (b-c) $ tenemos que:
+\[ \set{an + b| n \in \ZZ } \cap \set{kn +c | n \in \ZZ} = \varnothing  \]
+Por lo tanto, tenemos que para cada par de elementos $b,c$, existen entornos $ S(a,b) $ y $ S(k, c) $ que son disjuntos.
+
+\textbf{4.} Pruebe que cada $ S(a,b) $ es un \textbf{conjunto cerrado} (i.e. complemento de un abierto).
+
+\textbf{Solución.}
+Observemos dos cosas, uno es que $S(a,b)$ es un abierto por definición, por lo tanto, queremos ver que $S(a,b)$ es complemento de un abierto. Esto ultimo, lo podemos ver ya que:
+
+\[ S(a,b)  = \lrp{\bigcup_{i= 1}^{a-1} S(a ,b + i)}^c \]
+Y esto es visto con argumento de conteo: 
+Observar que $S(a,b)$ es una colección de números enteros con origen de una progresión aritmética (\emph{i.e.} la diferencia de dos términos es múltiplo de una constante), y el complemento de este conjunto son elementos de otras progresiones aritméticas con la misma constante de separación, pero con un origen diferente (\emph{i.e.} $ S(a,b) $ con b variando hasta cierto numero, en concreto, variando hasta la constante de la progresión menos $1$ ), entonces podemos describir el complemento como unión de finitas progresiones aritméticas.
+
+\textbf{5.} Muestre que:
+\[ \ZZ \backslash \set{-1,1} = \bigcup_{p \qt{ primo}} S(p,0) \]
+concluya que existen infinitos números primos.
+
+\textbf{Solución}
+Para esta parte del problema, utilizamos el \emph{Teorema fundamental de la Aritmética} probado en Estructural, citando:
+
+\begin{center}
+`` Todo número natural $n > 1$ tiene una única factorización en números primos.''
+\end{center}
+
+Por lo tanto todo numero a excepción de $1$ y $-1$ tiene una factorización única en primos y por lo tanto esta contenido a lo sumo en un $S(p,0)$  para $p$ primo. Por lo tanto el conjunto de los enteros salvo $1$ y $-1$, se puede escribir como la unión de :
+\[ \ZZ \backslash \set{-1,1} = \bigcup_{p \qt{ primo}} S(p,0) \]
+ \textbf{Observación:} Con este resultado, concluimos que existen infinitos primos, razonando de la siguiente manera:
+ 
+ Suponga que no hay infinitos primos, entonces la colección de números primos es finita, pero según el problema 2, la unión de $ \cup_{p \qt{ primo}} S(p,0)  $ sería cerrada, y tendríamos entonces que concluir con que el conjunto $ \set{1,-1} $ es abierto porque es el complemento a un cerrado, lo cual es absurdo.
+ 
+ Concluimos entonces que deben existir infinitos primos.
+ 
+ \emph{Aclaración: } El autor conocía de esta prueba antes de ver la tarea, debido a la aparición de esta en el libro: \emph{Proofs from THE BOOK} escrito por Aigner y Ziegler. Es por ello, que esta tarea sigue en similitud la misma idea escrita en tal libro. 
+
+
+
+
+\end{document}
