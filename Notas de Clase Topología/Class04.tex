@@ -1,0 +1,90 @@
+Las funciones constantes son trivialmente continuas.
+
+\begin{define}
+	Sean $X,Y$ espacios topologicos, es continua si $\forall U \subseteq Y $ abierto, $ f^{-1}(U)$ es abierto en $X$. 
+\end{define}
+La preimagen siempre preserva operaciones conjutistas. Basta checkar preimagenes de basicos sean abiertos, o incluso preimagenes de subbasicos sean abiertos. Fijar que la continuidad depende de las topologias.
+
+Observar que: si meto mas abiertos en $X$ no daño la continuidad de la funcion. La topologia de $X$ mas fina no daña el checking de continuidad. Si miro en $Y$, si ellla tiene la topologia trivial cualquier funcion que llegue a $Y$ es continua. Por otro lado si $Y$ tiene la discreta es bien dificil. Si $X$ tiene la discreta, entonces cualquier funcion que salga de $X$ es continua.
+\section{Topología Inicial}
+Suponga $X$ es un conjunto, y tengo una familia $ (\set{Y}_{i\ \in I}, \tau_i) $ que son espacios topológicos y por cada $i$ tengo: $\function{f_i}{X}{Y_i}$  función. La topologia incial inducia en $X$ es la menor toplogia en $X$ para que todas las funciones $f_i$ sean continuas.
+
+Esta topología es generada por estos conjuntos:
+\[ \set{f_i^{-1} (u): u \in \tau_i, i \in I} \]
+
+\textbf{Ejemplo 1: La Topología producto}
+Sean $X,Y$ espacios topologicos, vamos a tomar de ahora en adelante la convencion $\tau_x, \tau_y$ para respectivas topologias.
+
+Formen el producto cartesiano $ X \times Y$ y las funciones especiales son:
+\begin{align*}
+\function{\pi_1}{X \times Y}{X} \\
+\function{\pi_2}{X \times Y}{X}
+\end{align*}
+ y esas dos las queremos continuas.
+ 
+Entonces la topología generada por:
+
+\[ \set{\pi_1^{-1} : u \in \tau_x} \cup \set{\pi_2^{-1} : v \in \tau_y} \]
+
+Por lo menos tenemos que eso es una subbase. Rescritura:
+
+\[ \set{U \times Y: u \in \tau_x} \cup \set{ X \times V : V \in \tau_y} \]
+
+La interseccion es asociativa y es conmutativa. Observar que no es topologia pues union de cajas no es caja, pero es una base.
+Pero basta meter los basicos(garantizar que las bases vayan a abiertos):
+
+\textbf{Ejemplos del Ejemplo 1}
+Típico: $ \RR \times \RR  = \RR^2 $
+\textbf{Parentesis }
+Sean $ \tau_1 $ y $\tau_2 $ y tengo sus bases $ \gothic{B_1} $ y $\gothic{B_2} $, observar que las condiciones simetricas $ \gothic{B_1} \contain \tau_2 \implies T_1 \contain \tau_2$. 
+Coja un elemento de la base 1 e intercalar uno de la base 2. Y para probar lo otro, intercale.
+
+En el plano, vemos que metemos cajas en discos, y discos entre cajas.
+
+\textbf{Otro ejemplo: $ \mathfrak{N} \times \mathfrak{N} $}
+Base para topologia de $ \mathfrak{N} $ es la discreta (cualquier base debe tener los singleton) y en $ \mathfrak{N} \times \mathfrak{N} = \mathfrak{N} $ y es de dimension cero, pues tiene una base de clopens, tambien tiene singleton \textbf{del producto cartesiano}.
+Ojo $ \mathfrak{N} = \mathbb{N} $
+ 
+\textbf{Otro ejemplo} Tomar $ (\RR_{\qt{discreta}} \times \RR_{\qt{usual}}) = \RR_{\qt{lex}}^2 $ Observar que entonces la topologia lexica no es tan exotica, viene de dos espacios metrizables.
+
+\textbf{Ejercicio} Realizar y obtener una funcion de distancia para $\RR_{\qt{lex}} $
+
+\textbf{Ejemplo 2} $(X, \tau)$ es un espacio topológico, $Y$ subconjunto de $X$, la funcion iteresante a observar es: inclusion:
+\begin{align*}
+i: Y &\rightarrow x \\
+y&\rightarrowtail y
+\end{align*}
+el conjunto a observar (la topologia generada por):
+\[ \set{i^{-1}(u) : u \in \tau} \]
+observar que esto es igual
+\[ u \cap Y : u \in \tau \]
+Tenemos por lo menos que esto es una subbase y mirar que:
+\begin{align*}
+(U \cap Y) \cap (C \cap Y) \\
+\end{align*}
+esta colecion es cerrada bajo intersecciones finitas.
+Que tal uniones:
+\begin{align*}
+( U \cap Y) \cup  (V \cap Y)\\
+(U \cup V) \cap Y
+\end{align*}
+es decir que:
+\[ \bigcup_{i \in I} (u_i \cap Y) = \lrp{ \bigcup_{i \in I} \cap Y} \]
+Y vemos que esto ya es una topología porque ya hemos descritos todos los abierto.
+
+Y si volvemos a la definicion original:
+\[ \set{i^{-1}(u): u \in \tau} \]
+y vemos que como preimagen respeta interseccion, de una observamos que es una topologia.
+Concluimos que:
+\[ \set{U \cap Y : U \in \tau} \]
+es la topología de subespacio en $Y$ 
+\textbf{Ejemplo}
+$\RR$ con $ \mathbb{I} = \qt{irracionales} $, (intersecte los irracionales con los reales) son los abiertos.ahora mira que los imaginarios son cero dimensional. Observar que $ (p,q) \cap \mathbb{I} $ es una base de clopens. en terminologia los imaginarios son homemorfeos a los imaginarios cruz imaginarios. 
+\textbf{Otro ejemplo: $ \RR_{\qt{lex}}^2 $ }
+VER NOTAS, estamos considerando subconjunto y miramos las topologias dadas como subconjunto, o con la topologia del orden del suborden. 
+
+Sean $X,Y$ espacios topologicos, $ X \times Y$ con la topologia del producto, y ahora tome $ A \times B \contain X \times Y$ (No todos los subconjuntos de $ X \times Y$ se puede escribir como cajas). Existen dos topologias que en buenas noticias son equivalentes. $ \tau_{\qt{subespacio del producto}}$ y  $ \tau_{q\qt{producto del subespacio}} $ . Por doble inclusión podemos ver:
+Tome: $ U \in \tau_x $ y $ V \in \tau_y$ y vea que $ w = \lrp{A \times B} \cap \lrp{U \times V} $ y ahi observamos una de la inclusiones.
+
+Para la segunda obsersevemos que:
+\[ U \in \tau_x \quad U \cap A \quad V \in \tau_y \quad U \cap B \] y vemos entonces $ (U \cap A) \times (V \cap B) $ y vemos entonces como esas dos son equivalentes.
