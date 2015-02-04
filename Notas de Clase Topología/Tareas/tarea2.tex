@@ -38,11 +38,7 @@
 \textbf{1.} Muestre que si $ (X, < )$ es un buen orden y $A \contained X$ tiene una cota superior entonces $A$ tiene supremo.
 
 
-\textbf{2.}
-
-%https://proofwiki.org/wiki/Closed_Set_in_Linearly_Ordered_Space
-
-\textbf{3.}
+\textbf{2.} Probar el siguiente teorema:
 
 \begin{thm}
 	Sea $S_{\omega} $ con la topología del orden  y $ C \subseteq S_\omega $, $C $ es cerrados si y solo si para todo $A \contained C$, $ A \neq \varnothing$ enumerable, el supremo de $A$ esta en $C$
@@ -55,16 +51,19 @@
 	 
 \end{proof}
 
+\textbf{3.}
+
+La topología del producto esta dada por:
+
+\[  \tau_{X \times Y} = \set{arg1} \]
 
 \textbf{4.} Si $L$ es una recta en el plano, describa la topología que $L$ hereda como subespacio de $\RR_l \times \RR$ y como subespacio de $\RR_l \times \RR_l $. En ambos casos se trata de una topología conocida.
 
 \textbf{Solución}
-Observar que una base para $\RR_l \times \RR$ es una colección de conjuntos de la forma $[a,b) \times (c,d)$. Por otra parte, una base para $\RR_l \times \RR_l$ es una colección de la forma $[a,b) \times [c,d)$. Observemos que la topología de la linea es de diferentes casos dependiendo en la pendiente de la linea, si la linea es vertical tenemos que para $\RR_l \times \RR$ la linea tiene la topología usual, mientras que la linea vertical... http://dbfin.com/topology/munkres/chapter-2/section-16-the-subspace-topology/?t=problem-8-solution
-
-
-
+Observar que una base para $\RR_l \times \RR$ es una colección de conjuntos de la forma $[a,b) \times (c,d)$. Por otra parte, una base para $\RR_l \times \RR_l$ es una colección de la forma $[a,b) \times [c,d)$. Observemos que la topología de la linea es de diferentes casos dependiendo en la pendiente de la linea, si la linea es vertical tenemos que para $\RR_l \times \RR$ la linea tiene la topología usual, mientras que la linea vertical bajo la topología de $RR_l \times \RR_l$, por la vista del plano puede ser o $\RR_l $ o $ \RR_u$ dependiendo en como se corte la recta. Para los demas (es decir con pendientes diferentes de $ \pm \infty $). Para estos casos, las bases pueden ser los rayos cerrados de primer tipo $ [a,\infty) $ o rayos abiertos de primer tipo $ \set{x | x > a} $ o rayos cerrados de segundo tipo $ \set{x | a \leq a}$. Tenemos entonces los casos de $\RR_l$ que es la topología de $\RR$ del límite inferior, o la topología de $\RR $ bajo la topología del limite superior. Ahora, similarmente bajo la topología $ \RR_l \times \RR_l$ podemos tener diferentes abiertos entre rayos cerrados y abiertos, por lo tanto, tenemos la topología discreta.
+\begin{center}
 \begin{tabular}{|c|c|c|}
-	\hline Dirección de la linea (con pendiente)  & $\RR_l \times \RR$   & $\RR_l \times \RR_l$  \\ 
+	\hline Dirección de la linea (con pendiente )  & $\RR_l \times \RR$   & $\RR_l \times \RR_l$  \\ 
 	\hline $\uparrow$ & $\RR$  & $\RR_l$  \\ 
 	\hline $\nearrow$ & $\RR_l$ & $\RR_l$ \\ 
 	\hline $\rightarrow $ & $\RR_l$ & $\RR_l$  \\ 
@@ -75,11 +74,14 @@ Observar que una base para $\RR_l \times \RR$ es una colección de conjuntos de 
 	\hline $\nwarrow $ & $\RR_u$ & $\RR_d$ \\ 
 	\hline 
 \end{tabular} 
+\end{center}
+\vfill
 
 
-\textbf{10}
 
-\emph{(i)} Topología del producto y topología de diccionario.
+
+
+\textbf{Punto 10 de la sección $16$ de Munkres.}
 
 Sea $ \tau_{\qt{prod}} $ la topología del producto, $\tau_{d} $ la topología de diccionario, y sea $ \tau_s$ la topología dada como subespacio del orden de diccionario. 
 
@@ -102,6 +104,6 @@ Ahora, volviendo al problema en general, la topología de producto es generada p
 \[ \set{x} \times ((a,b) \cap [0,1]) \]
 y vemos que cualquier elemento base de la primera topología, i.e, $ ((a,b) \cap [0,1]) \times ((c,d) \cap [0,1]) $ puede ser generada como unión de abiertos en la tercera topología, al mismo tiempo, vemos que cualquier base en la segunda topología, de la forma $(a,b) < (x,y) < (c,d) $ se puede generar como unión de abiertos, por ultimo utilizamos el Lema 1.3 del libro para ver que la tercera topología es estrictamente mas fina, por que las dos primeras son incomparables. En conclusión:
 
-http://www.math.wsu.edu/faculty/remaley/525fa12hw2sol.pdf
+%http://www.math.wsu.edu/faculty/remaley/525fa12hw2sol.pdf
 
 \end{document}
