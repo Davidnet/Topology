@@ -98,3 +98,37 @@ When topologies are given by bases, we want to have a criterion for deciding whi
 \end{proof}
 
 
+\section{Closed Sets and limit Points}
+
+\begin{define}
+	A subset $A$ of a topological space $X$ is said to be \textbf{closed} if the set $ X - A$ is open.
+\end{define}
+
+Observe that a set can be open, or closed or both.
+
+\begin{thm}
+	Let $X$ be atopological space, Then the following conditions holds:
+	\begin{itemize}
+		\item $ \varnothing $ and $X$ are closed.
+		\item Arbitary intersections of closed sets are closed.
+		\item Finite unions of closed sets are closed.
+	\end{itemize}
+\end{thm}
+
+\begin{proof}
+	Observe that $ \varnothing $ and $X$ are closed necause they are the complements of the open set $X$ and $ \varnothing $ respictively.
+	
+	For the second proof, suposse that we are given a collection of closed sets $ \set{A_\alpha}_{\alpha \in J} $, and we apply then DeMorgan's Law,
+	\[ X - \bigcap_{\alpha \in J} A_\alpha =\bigcup (X - A_\alpha) \]
+\end{proof}
+
+\begin{thm}
+	Let $Y$ be a subspace of $X$. Then a a set $A$ is closed in $Y$ if and only if it equals the intersection of a closed set of $X$
+\end{thm}
+
+
+
+
+
+
+
