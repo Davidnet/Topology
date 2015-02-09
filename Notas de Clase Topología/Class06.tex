@@ -1,0 +1,79 @@
+\begin{define}
+	$\function{f}{X}{Y}$ es una función continua, si:
+	$ f^{-1}(U) $ es abierto en $X$, $\forall U$ abierto en $Y$
+\end{define}
+\begin{thm}
+	\begin{itemize}
+		\item Toda función constante es continua.
+		\item Composición de continuas es continua.
+		\item $A \subseteq X$, $\function{i_{A\contain X}}{A}{X}$ es continua.
+		\item $\function{f}{X}{Y}$ es continua y $A \subseteq X$ implica $\function{\restric{f}{a}}{A}{Y}$ es continua. y esta es porque es la composicion de dos continuas: $ \restric{f}{A} = f \circ i_{A \contain X} $
+		\item el codominio no importa, porque cada funcion la podemos mirar así: $  \function{f}{X}{f(X)} $, las funciones son independientes de los codominios. La específicacion que algo sea sobreyectiva, es artificial.
+		\item 
+	\end{itemize}
+\end{thm}
+
+\textbf{Definición a trozos:}
+Suponga que quiero definir una función $ \function{f}{X}{Y} $ donde $X = \bigcap_{\alpha \in I} A_\alpha$ y defino ahora $\function{f_\alpha}{A_{\alpha}}{Y}$ y los definimos como $f(x) = f_\alpha (x) \qt{si} x \in A_\alpha $. pero para que tenga sentido: $ f_\alpha \mid (A_{\alpha} \cap A_{\beta}) = f_\beta \mid (A_\alpha \cap A_beta) $
+
+¿Que condiciones necesito para que tal $f$ sea continua?
+
+En ese contexto:
+
+\textbf{Caso 1} $f$ es continua, si todos los $A_\alpha $'s son abiertos. \textbf{Formulacion local de continuidad}
+
+\textbf{Demostración:} Sea $U \contain Y$ abierto y voy a calcular $ f^{-1}(U) = \set{x \in X | f(x) \in U} $ pero esto es igual  a $ \bigcup_{\alpha \in I} \set{x \in A_\alpha | f(x) \in U}$, pero ademas esta es la union: $ \bigcup_{\alpha \in I} \set{x \in A_{\alpha}| f_{\alpha}(x) \in U} $, pero tambien es igual a: $ \bigcup_{\alpha \in I}f^{-1}_\alpha (u) $, observar que esto requiere que los $A_\alpha $ deben ser abiertos.
+
+\textbf{Caso 2}
+$f$ es continua si el conjunto de indicies es finiito y los $A_\alpha $'s  son cerrados.  
+\textbf{Demostración} Sea $C$ es cerrados, para checkar so es continua, $C$ es cerrado luego:
+\[ f^{-1}(C) = \bigcup_{\alpha \in I } f^{-1}_\alpha(C) \]
+\textbf{Lema de pegamiento.}
+
+para probar que algo es continua  checkear.
+
+\begin{thm}
+	para $\function{F}{X}{Y}$ las siguientes afirmaciones son equivalentes:
+	\item $f$ es continua.
+	\item $\forall A \contain X$, $f(\bar{A}) \contain \bar{f(A)}$.
+	\item $b$ cerrado en $Y$ $ \implies$ $f^{-1}(B)$ cerrado en $X$.
+	\item $\forall x \forall V$ vecindad de $f(x)$  $\exists U$ vecindad de $x$ $f(U) \contain V$
+\end{thm}
+
+\textbf{3 implica 2}
+Sea $A \contain X$, $\contain$ $f^{-1}(\bar{f(A)}) $ es cerrado en $X$. Mirar:
+\[ A \contain F^{-1}f(A) \contain f^{-1}(\bar{f(A)}) \]. y vemos que:
+\[ \bar{A} \contain f^{-1}(\bar{f(A)}) \]
+y cojamos $f$ a ambos lados:
+\[ f(\bar{A}) \contain ff^{-1}(\bar{f(A)}) \contain \bar{f(A)} \]
+
+\textbf{2 implica 1}
+Veamos que $f(\bar{A}) \contain \bar{f(A)} $, entonces tambien tenemos que:
+\[ f(A) \cap U = \varnothing \]
+y 
+\[ \bar{f(A)} \cap U = \varnothing \]
+implica $ f(\bar{A}) \cap U = \varnothing $
+¡Probar en casa!.
+
+\textbf{1 implica 4}
+Observemos que $4$ menciona que para todo tiene una semajanza con la definicion de continuidad de analísis. 
+Sea $x \in X$ y sea $V$ vecindad de $f(x)$, cojamos la preimagen de $V$, es decir tome $U = f^{-1}(V) $ lo cual implica que $ f(u) = ff^{-1}(v) \contain V$.
+
+\textbf{4 implica 3}
+Sea $V$ cerrado en $Y$, miro la preimagen de $V$, es decir $ f^{-1}(V) $, ahora toca porbar que el complemento de $ f^{-1}(B) $ es abierto.
+
+
+\begin{define}
+	$\function{f}{X}{Y}$ es homeomorfismo, es como el isomorfismo de topología:
+	\begin{itemize}
+		\item $f$ is biyectiva.
+		\item $u \contain X$ es abierto en $X$ $\iff$ $f(u)$ es abierto en $Y$
+		
+	\end{itemize}
+	2 se puede escribir como $f$ es continua \textbf{y} $f^{-1}$ es continua.
+\end{define}
+
+
+
+
+
