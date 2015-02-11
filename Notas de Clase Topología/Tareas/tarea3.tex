@@ -1,0 +1,102 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\author{David Cardozo}
+
+\title{Tarea \# 3 (Conjunto Cerrados y Funciones Continuas)}
+\newtheorem{define}{Definición}
+\newtheorem{thm}{Teorema}
+\newtheorem{prop}{Proposición}
+\newtheorem{lem}{Lema}
+
+%Customized Commands
+\newcommand{\lrp}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\ZN}[1]{\frac{\mathbb{Z}}{#1 \mathbb{Z}}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\qt}[1]{\textrm{#1}}
+\newcommand{\function}[3]{#1 : #2 \rightarrow #3}
+\newcommand{\contained}{\subseteq}
+\newcommand{\restric}[2]{ #1\restriction_{#2}}
+\newcommand{\divs}{\mid}
+\newcommand{\ndivs}{\nmid}
+
+
+\begin{document}
+\maketitle
+\textbf{Proposición 1.}Si $(X,\tau)$ es un espacio $puerta$ y además Hausdorff, entonces $X$ tiene a lo sumo un punto límite.
+
+\textit{Demostración}
+
+Sea $ (X,\tau) $ un espacio puerta y de Hausdorff, Sean dos puntos $u,v$ diferentes de $X$, por la propiedad de que el espacio es de Hausdorff, existen vecindades $U$ y $V$ (correspondientes a $ u $ y a $v$), que son disyuntas, i.e, $ U \cap V = \varnothing$. Observar que $ U \cup \set{v} - \set{u} $ es cerrado siempre que $ v $ es un punto limite. (Para ello lo demostramos en el siguiente lema).
+
+\begin{lem}
+	Si $ v $ es un punto limite en un espacio puerta, entonces $ U \cup \set{v} - \set{u} $ es cerrado
+\end{lem}
+\begin{proof}
+	Sea $v$ un punto limite. Suponga por contradicción que $ U \cup \set{v} - \set{u} $ es abierto, podemos tambien considerar el conjunto abierto $  [U \cup \set{v} - \set{u}] \cap V $, pero, esta intersección tiene como único elemento a $v$,  pero esto contradice el hecho que $v$ es un punto limite. Por lo tanto concluimos  $ U \cup \set{v} - \set{u} $ no es abierto y utilizando la hipótesis que estamos en un espacio puerta, podemos entonces decir que  $ U \cup \set{v} - \set{u} $ es cerrado.
+\end{proof}
+
+Por el lema anterior  $ U \cup \set{v} - \set{u} $ es abierto y su complemento es abierto. Tenemos entonces  $[ U \cup \set{v} - \set{u} ]^c \cap U$ es abierto y por lo tanto, como  $ (U \cup \set{v} - \set{u})^c \cap U = \set{u} $. $ \set{u} $ es abierto y no es punto limite de $X$ para $ u \neq v$. Concluimos que a lo sumo $X$ tiene un punto limite.
+\qedsymbol
+
+\textbf{Proposición 2.} Sea $X\subseteq \mathbb{R}$ con la topología de subespacio. Si $X$ es un espacio puerta entonces $X$ es enumerable.
+
+\textit{Demostración}
+
+Por contradicción, Suponga $X$ subconjunto de $\RR$ con la topología de subespacio y $X$ es no enumerable. 
+
+\begin{lem}
+	$X \contained \RR$ no enumerable entonces tiene al menos un punto límite
+\end{lem}
+
+\textit{Demostración}
+Suponga por contradicción $X$ no tiene punto limite, como   $X$ subconjunto de $\RR$ implica que $X$ es separable, entonces existe $D \contained X$ un conjunto denso contable. Observar que para todo $x \in X$ existe una vecindad de $x$ tal que $U_x - \set{x} \cap = \varnothing $. Ahora como $D$ era un conjunto denso de $X$ existe $d \in D$ para el cual $ d \in U_x \cap X  $ es abierto para todas las vecindades de cualquier $x$. Pero entonces esto implicaría que $X=D$, que contradice que $X$ es enumerarle. Por lo tanto hay un punto límite. \qedsymbol
+
+Por un argumento similar entonces $X - \set{x}$ tiene un punto limite diferente de $x$,con lo que concluimos que $X$ no es un espacio puerta, pues hay mas de un punto limite.
+
+\textbf{Proposición 3.} Sea $A\subseteq S_\Omega$. Si $A$ es enumerable entonces $\bar{A}$ es enumerable.
+
+\textit{Demostración}
+
+Sea $A \contained S_\Omega$, $A$ es enumerarle y por la anterior tarea hay un cota superior  $a$ tal que  $ a \in S_\Omega$.
+
+\begin{lem}
+	Si $x$ punto límite de $A$ entonces $ x \leq a$
+\end{lem} 
+\begin{proof}
+	Por contradicción, sea $x$ un punto límite de $A$ y $x >a$. Considere entonces $ S = \set{s \in S_\Omega | s>x} $. Observemos entonces que $S$ no es vacio, pues si $S$ fuera vacío $ (\operatorname{min}S,x) $ sería enumerable. Entonces $S$ no vacio, significa que existe un elemento mínimo $ \gamma $ considere entonces el abierto de la forma $ (a, \gamma) $ en donde $ x \in (a, \gamma) $ pero $ (a, \gamma) \cap A = \set{x} $, lo cual contradice el hecho que $x$ es un punto limite. 
+\end{proof}
+
+Concluimos entonces, que $ \bar{A} \contained [\operatorname{min}S_{\omega}, a] $ y tenemos entonces que existe un $y \in S_\Omega$ tal que  $ \bar{A} \contained [\operatorname{min}S_{\omega}, y] $ que es enumerable. Conluimos entonces que $\bar{A}$ es enumerable.
+
+\textbf{Proposición 4} Si $f:\mathbb{R}_\ell \rightarrow S_\Omega$ es una función continua entonces $f$ no es inyectiva.
+
+\textit{Demostración}
+Siguiendo el hilo de todas las demostraciones (\emph{¡Sorpresa!} Por contradicción). Sea $f$ una functión continua y suponga que es inyectiva. Sea $ \Sigma =\set{\sigma \in S_\Omega| f(x) = s, x \in \RR_\ell}  $ por construcción, observamos que $ \Sigma \neq \varnothing$, y tenemos entonces que existe un elemento mínimo $s$. Por injectividad, podemos considerar el conjunto no vacio $ \Sigma - \set{s} $, este también tiene un elemento mínimo $s'$. Definamos ahora $A = [s,s') $ que es un abierto de $ S_\Omega $ y observar que $ f^{-1}(A) $ es equivalente a $ f^{-1}(s) $, por lo tanto existe un $x \in \RR_\ell $ tal que $ f^{-1}(s) = x $, pero observar que $ \set{x} $ no es un abierto de $\RR_\ell$, entonces tenemos la preimagen de un abierto, no ser un abierto. Lo cual contradice la hipótesis que $f$ es continua. \qedsymbol
+
+\textbf{Proposición 5} Sean $f:A\rightarrow B$ y $g:C\rightarrow D$ funciones contínuas. Definimos la función $f\times g:A\times C\rightarrow B\times D$ por la ecuación $$(f\times g)(\langle a,c\rangle )=\langle f(a),g(c)\rangle $$  $f\times g$ es contínua.
+
+\textit{Demostración}
+
+\emph{Peligro: Demostración corta}
+Sea un básico $U \times V $ de la topología producto $ B \times D $, es decir, $ U $ abierto en $B$ y $V$ abierto en $D$. $(f\times g)^{-1}(U\times V)=\{\langle a,b\rangle \text{ } |\text{ }f(a)\in U,g(b)\in V\}=f^{-1}(U)\times g^{-1}(V)$ que es un producto de la forma $f^{-1}(U)  $ abierto en $A$ y $ g^{-1}(V)$ abierto en $C$, debido a la continuidad de $f$ y $g$, y estos son básicos de la topología producto de  $A\times C$. Por lo tanto concluimos que $ f \times G $ es continua. \qed
+
+
+
+
+
+\end{document}
+
