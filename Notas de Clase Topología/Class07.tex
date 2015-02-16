@@ -1,0 +1,33 @@
+\textbf{Espacios Métricos [Metrizables]}
+
+Recordar en $ \RR^n $ si $ x \in \RR $, $ \vec{x} = (x_1, \ldots x_n) $
+con la metrica de $ d_e(\vec{x},\vec{y}) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2} $ esta es la euclidiana, mientras que la romboide tengo:
+\[ d(\vec{x},\vec{y}) = \sum_{i=1}^{n} \abs{x_i - y_i} \]
+junto con otra metrica: 
+\[ d(\vec{x}, \vec{y}) = \operatorname{max}\set{\abs{x_i - y_i}: i \in \set{1, ..., n}} \]
+
+Propiedad no topologica: Ser acotado. No es una propiedad topologica.
+
+Sea $(X,d)$ un espacio metrico, tenemos que podemos acotar:
+\[ \vec{d}(x,y) = \operatorname{min}\set{d(x,y),1} \]
+tambien podemos considerar la siguiente metrica:
+\[ d'(x,y) = \frac{d(x,y)}{1 + d(x,y)} \]
+Hacer el ejercicio.
+Propiedad de separabilidad, y ser espacio completo, no son propiedades topologicas.
+Dar cuenta que $\RR$ con la metríca, es $ d(x,y) = \abs{\arctan(x)-\arctan(y)} $
+
+Observar que $ \RR  $ con la topologia usual y $ (-\frac{\pi}{2} , \frac{\pi}{2}) $ son homemorfos.
+\begin{align*}
+\RR &\overset{\arctan(x)}{\rightarrow} (-\pi/2, \pi/2) \\
+(-\pi/2, \pi/2) &\overset{tan(x)}{\rightarrow} \RR
+\end{align*}
+
+Sea $ \mathbb{P} = \RR \backslash \QQ $, mirar que estos que no son completos. $ \PP \equiv \omega^{\omega} $
+
+Observar que:
+
+\[ d(x,y) = \sup\set{\frac{\bar{d}(x_i,y_i)}{i} : i \in W}\]
+
+Ver Munkres, para hacer la tarea. 
+
+Un gran teorema, es que $ f_n \overset{\qt{unif}}{\rightarrow}f $ si y solo si $ d(f_n,f) \overset{n \rightarrow \infty}{\rightarrow} 0 $ con la defincion de metrica arriba.
