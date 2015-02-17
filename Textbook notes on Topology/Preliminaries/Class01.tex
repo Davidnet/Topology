@@ -178,3 +178,203 @@ Any set with two binary operations satisfying $(1)$ - $(5)$ is called a \textbf{
 	\[ \ZZ_+ = \bigcap_{A \in \gothic{A}} A \]
 	
 \end{define}
+
+The following are properties of: $ \ZZ_+ $ 
+
+\begin{enumerate}
+	\item $ \ZZ_+ $ is inductive.
+	\item (Principle of Induction) If $A$ is an inductive set of positive integers then $ A= \ZZ_+ $
+\end{enumerate}
+We define the set $ \ZZ $ of \textbf{integers} to be the set consisting of the positive integers $ \ZZ_+ $ and the number $ 0  $. The set $ \QQ  $ of quotients of integers is called the set of \textbf{rational numbers}.
+We define
+\[ \set{1, \ldots, n} = S_{n+1} \]
+
+\begin{thm}
+	\textbf{Well-ordering property}. Every nonempty subset of $ \ZZ_+ $ has a smallest element.
+\end{thm}
+
+\begin{proof}
+	We first prove that, for each $ n \in \ZZ_+ $, the following statement holds: Every nonempty subset of $ \set{1, \ldots, n} $ has a smallest element.
+	By induction. Let $A$ be the set of all positive integers $ n $ for which this statement holds. Then $ A $ contains 1, then, supposing $ A $ contains $ n $, we show that it contains $ n+1 $. So let $ C $ be a nonempty subset of the set $ \set{1, \ldots, n} $. If $ C $ consists of only the element $ n+1 $ we are done, otherwise consider the set $ C \cap \set{1, \ldots n} $ which is nonempty. Because $ n \in A $, this set has a smallest element, which will automatically be the smallest element of $C$ also. Thus $A$ is inductive, and we conclude $ A=\ZZ_+ $. Now we prove the theorem. Suppose that $D$ is a nonempty subset of $\ZZ_+$. Choose an element $n$ of $D$. Then the set $A = D \cap \set{1,..,D}$ is nonempty, os that $A$ has a smallest element $k$. The element $k$ is automatically the smallest element of $D$ as well.
+\end{proof}
+
+\textbf{ \LARGE Cartesian Product}
+
+\begin{define}
+	Let $ \gothic{A} $ be a nonempty collection of sets. An \textbf{indexing function } for $ \gothic{A} $ is a surjective function $f$ from some set $J$ , called the \textbf{index set}, to $ \gothic{A} $. The collection $ \gothic{A} $, together with the indexing function $f$, is called an \textbf{indexed family of sets}. Given $ \alpha \in J $, we shall denote the set $ f(\alpha) $ by the symbol $ A_\alpha $. And we shall denote the indexed family itself by the symbol:
+	\[ \set{A_\alpha}_{\alpha \in J} \]
+	
+\end{define}
+
+The indexing function it is not required to be injective. Two especially useful index sets are the set $ \set{1, \ldots,n} $ of the positive integers to $n$ and the set $ \ZZ_+ $.
+
+\begin{define}
+	Let $m$ be a positive integer. Given a set $X$, we define an \textbf{m-tuple } of elements of $X$ to be a function.
+	\[ \textbf{x}: \set{1, \ldots, m} \rightarrow X \].
+	If $\textbf{x}$ is m-tuple, we often denote the value of \textbf{x} at $i$ by the symbol $x_i$ and call it the ith \textbf{coordinate} of \textbf{x}. And we often denote the function \textbf{x} itself by the symbol:
+	\[ (x_1, \ldots,x_m) \]
+\end{define}
+
+Now let $ \set{A_1, \ldots A_m} $ be a family of sets indexed with the set $ \set{1, \ldots, m} $. Let $ X = A_1 \cup \ldots \cup A_m $. We define the \textbf{cartesian product} of this indexed family, denoted by:
+\[ \prod_{i=1}^{m} A_1 \quad \qt{or} \quad A_1 \times \ldots \times A_m.  \]
+to be the set of all m-tuples $(x_1, \ldots, x_m) $ of elements of $X$ such that $ x_i \in A_i $ for each $i$.
+
+\begin{define}
+	Given a set $X$, we define an\textbf{ $ \omega$-tuple} of elements of $X$ to be a function:
+	\[ \textbf{x}: \ZZ_+ \rightarrow X \]
+	we also call such a function a \textbf{sequence}, or an \textbf{infinite sequence}, of elements of $X$. If $\textbf{x}$ is an $\omega$-tuple, we often denote $\textbf{x} $ by the symbol:
+	\[ (x_1, \ldots) \quad \qt{or} \quad (x_n)){n\in \ZZ_+} \]
+\end{define}	
+Now let $ \set{A_1, \ldots} $ be a family of sets, indexed with the positive integers; let $X$ be the union of the sets in this family. The \textbf{Cartesian product} of this indexed family of sets, denoted by:
+
+ \[ \prod_{i \in \ZZ_+} A_i \quad \qt{or} \quad A_1 \times \ldots \] 
+ 
+ is defined to be the set of all $ \omega $-tuples $ (x_1,X_2, \ldots)  $ of elements of $X$ such that $ x_i \in A_i $ for each $i$
+
+\textbf{Examples}
+If $ \RR $ is the set of real numbers, then $ R^m $ denotes the set of all $ m $-tuples of real numbers; it is often called \textbf{euclidean $ m $-space}. Analogously, $ R^\omega $ is sometimes called ``infinite-dimensional euclidean space''.
+
+\textbf{\LARGE Finite sets}
+
+\begin{define}
+	A set is said to be \textbf{finite} if there is a bijective correspondence of $A$ with some section of the positive integers. That is, $A$ is finite if it is empty or if there is a bijection:
+	\[ \function{f}{A}{\set{1,\ldots,n}} \]
+	for some positive integer $n$. In the former case, we say that $A$ has \textbf{cardinality $0$}; in the latter case, we say that $A$ has \textbf{cardinality $n$}
+\end{define}
+
+\textbf{Lemma} Let $n$ be a positive integer. Let $A$ be a set; let $a_0$ be an element of $A$. Then there exists a bijective correspondence $f$ of the set $A$ with the set $\set{arg1}, \ldots n+1$ if and only if there exists a bijective correspondence $g$ of the set $ A - \set{a_0}$ with the set $ \set{1, \ldots, n} $.
+
+From this lemma we derive some important results.
+
+\begin{thm}
+	Let$A$ be a set; suppose that there exists a bijection $ \function{f}{A}{\set{1, \ldots n}}$ for some $n \in \ZZ_+$. Let $B$ be a proper subset of $A$. Then there exists no bijection $\function{g}{B}{\set{1, \ldots n}}$; but (provided $B \neq \varnothing$) there does exist a bijection $\function{h}{B}{\set{1, \ldots,m}}$ for some $ m < n$
+\end{thm}
+
+\textbf{Corollary } If $ A $ is finite, there is no bijection of $A$ with a proper subset of itself.
+
+\textit{Proof} Assume that $B$ is a proper subset of $A$ and that $ \function{f}{A}{B} $ is a bijection. By assumption, there is a bijection $ \function{g}{A}{\set{1, \ldots, n}} $ for some n. The composite $ g \circ f\inv  $ is then a bijection of $B$ with $ \set{1, \ldots, n} $. This contradicts the preceding theorem.
+
+\textbf{Corollary}  The cardinality of a finite set $A$ is uniquely determined by $A$.
+
+\textit{Proof} Let $ m<n $. Suppose there are bijections:
+
+\begin{align*}
+f: A &\rightarrow {\set{1, \ldots, n}} \\
+g: A &\rightarrow \set{1, \ldots, m}
+\end{align*}
+Then the composite:
+\[ g \circ f\inv: \set{1, \ldots,n} \rightarrow \set{1, \ldots,m} \]
+is a bijection of the finite set $ \set{1, \ldots,n} $ with a proper subset of itself, contradicting the corollary just proved.
+
+\textbf{Corollary} If $B$ is a subset of the finite set $A$, then $B$ is finite. IF $B$ is a proper subset of $A$, then the cardinality of $B$ is less than the cardinality of $A$.
+
+\textbf{Corollary} Let $B$ be a nonempty set. Then the following are equivalent:
+\begin{enumerate}
+	\item $B$ is finite.
+	\item There is a surjective function from a section of the positive integers onto $B$.
+	\item There is an injective function from $B$ into a section of the positive integers.
+\end{enumerate}
+
+\textit{Proof} $ 1 \implies 2 $. Since $B$ is nonempty, there is, for some $n$, a bijective function $ \function{f}{\set{1, \ldots, n}}{B} $
+
+$ 2 \implies 2 $ If $\function{f}{\set{1, \ldots, n}}{B}$ is surjective, define $ \function{g}{B}{\set{1, \ldots,n}} $ by the equation:
+\[ g(b) = \qt{ smallest element of } f\inv(\set{b}) \]
+Because $f$ is surjective, the set $ f\inv\set{(b)} $ is nonempty; then the well-ordering property of $ \ZZ_+ $ tell us that $ g(b) $ is uniquely defined. The map $g$ is injective, for if $ b \neq b'$ then the sets $ f\inv(\set{b}) $  and $ f\inv(\set{b'}) $
+
+$ 3 \implies 1 $ If $ \function{g}{B}{\set{1, \ldots, n}} $ is injective, then changing the range of $g$ gives a bijection of $B$ with a subset of $ \set{1, \ldots, n} $. It follows from the preceding corollary that $B$ is finite. \qedsymbol
+
+\textbf{Corollary} Finite unions and finite cartesian products of finite sets are finite.
+
+
+\textbf{\LARGE Countable and Uncountable Sets}
+
+\begin{define}
+	A set $A$ is said to be \textbf{infinite} if it is not finite. It is said to be \textbf{countably infinite} if there is a bijective correspondence:
+	\[ \function{f}{A}{\ZZ_+} \]
+	
+\end{define}
+
+\begin{define}
+	A set is said to be \textbf{countable} if it is either finite or countably infinite. A set that is not countable is said to be \textbf{uncountable}
+\end{define}
+
+a useful criterion for showing that a set is countable is the following:
+
+\begin{thm} \label{countable criterion}
+	Let $B$ be a nonempty set. Then the following are equivalent:
+	\begin{enumerate}
+		\item $B$  is countable.
+		\item There is a surjective functions $ \function{f}{\ZZ_+}{B} $.
+		\item There is an injective function $ \function{g}{B}{\ZZ_+} $
+	\end{enumerate}
+\end{thm}
+
+\textit{Lemma } If $C$ is an infinite subset of $ \ZZ_+ $, then $C$ is countably infinite.
+
+To avoid logical problems, we define then the following principle.
+
+\textbf{Principle of recursive} Let $A$ be a set. Given a formula that defines $ h(1) $ as a unique element of $A$, and for $ i > 1 $ defines $ h(i) $ uniquely as an element of $A$ in terms of the values of $h$ for positive integers less than $i$, this formula determines a unique function $ \function{h}{\ZZ_+}{A} $
+
+\textbf{Corollary } A subset of a countable set is countable.
+
+\textit{Proof} Suppose $A \subset B$, where $B$ is countable. There is an injection $f$ of $B$ into $ \ZZ_+ $; the restriction of $f$ to $A$ is an injection of $A$ into $ \ZZ
+_+ $
+
+\textbf{Corollary } The set $ \ZZ_+ \times \ZZ_+ $ is countably infinite
+
+\textit{Proof} In view of \ref{countable criterion}, it suffices to construct an injective map $ \function{f}{\ZZ_+ \times \ZZ_+}{\ZZ_+} $. We define $f$ by the equation:
+
+\[ f(n,m) = 2^n\cdot 3^m \]
+
+\emph{$f$ is injective}, for suppose that $ 2^n3^m = 2^p3^q $. If $ n<p $, then $ 3^m = 2^{p-n}3^q $,  contradicting the fact that $ 3^m $ is odd for all $ m $. Therefore, $ n = p $. as a result, $ 3^m = 3^q $, then if $ m < q $, it follows that $ 1 = 3^{q-m} $, another contradiction hence $ m = q $
+
+\begin{thm}
+	A countable union of countable sets is countable, also a finite product of countable sets is countable.
+\end{thm}
+
+Observe that is very tempting to assert that countable products of countable sets should be countable; but this assertion is in fact not true.
+
+\begin{thm}
+	Let $ X $ denote the two element set $ \set{0,1} $. Then the set $ X^{\omega} $ is uncountable.
+\end{thm}
+
+\textit{Proof} We show that, given any function:
+\[ g: \ZZ_+ \rightarrow X^\omega \]
+g is not surjective. For this purpose, let us denote $ g(n) $ as
+\[ g(n) = (x_{n1},x_{n2},x_{n3}, \ldots, x_{nm}, \ldots) \]
+where each $ x_{ij} $ is either $ 0 $ or $ 1 $. Then we define an element $ \textbf{y} = (y_1,y_2, \ldots) $ of $ X^\omega $ by letting:
+
+\[ y_n = \begin{cases}
+0 &\qt{ if } x_nn =1\\
+1 &\qt{ if } x_nn =0\\
+\end{cases} \]
+Now $ \textbf{y} $ is an element of $ X^\omega $, and $ \textbf{y} $ does not lie in the image of $ g $; given $ n $, the point $ g(n) $ and the point $ \textbf{y} $ differ in at least one coordinate. \qed
+
+\begin{thm}
+	Let $ A $ be a set. There is no injective map $ \function{f}{\PP(A) }{A} $, and there is no surjective map $ \function{g}{A}{\PP(A)} $
+\end{thm}
+
+\textbf{\LARGE Infinte Sets and the Axiom of Choice}
+
+\begin{thm}
+	Let $A$ be a set. The following statements about $A$ are equivalent:
+	\begin{enumerate}
+		\item There exists an injective function $ \function{f}{\ZZ_+}{A} $
+		\item There exists a bijection of $A$ with a proper subset of itself.
+		\item $A$ is infinite.
+	\end{enumerate}
+\end{thm}
+
+The proof of this theorem allows us to discuss an important method of forming sets. \textbf{The Axiom of Choice}
+
+\textbf{Axiom of choice} Given a collection $ \mathcal{A} $ of disjoint nonempty sets, there exists a set $ C $ consisting of exactly one element from each element of $ \gothic{A} $; that is, a set $C$ such that $C$ is contained in the union of the elements of  $ \gothic{A} $, and for each $ A \in \gothic{A} $, the set $C \cap A$ contains a single element.
+
+\textbf{Lemma (Existence of a choice function)} Given a collection $ \gothic{B} $ of nonempty sets (not necessarily disjoint), there exists a function:
+\[ \function{c}{\gothic{B}}{\bigcup_{B \in \gothic{B}}B} \]
+such that $ c(B) $ is an element of $B$, for each $b \in \gothic{B}$
+
+\textbf{\LARGE Well-Ordered Sets}
+
+\begin{define}
+	A set $A$ with an order relation $ < $ is said to be \textbf{well-ordered} if every nonempty subset $A$ has a smallest element.
+\end{define}
