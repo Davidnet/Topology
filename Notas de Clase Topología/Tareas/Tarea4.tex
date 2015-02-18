@@ -1,0 +1,187 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\author{David Cardozo}
+
+\title{Tarea \# 3 (Conjunto Cerrados y Funciones Continuas)}
+\newtheorem{define}{Definición}
+\newtheorem{thm}{Teorema}
+\newtheorem{prop}{Proposición}
+\newtheorem{lem}{Lema}
+
+%Customized Commands
+\newcommand{\lrp}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\ZN}[1]{\frac{\mathbb{Z}}{#1 \mathbb{Z}}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\qt}[1]{\textrm{#1}}
+\newcommand{\function}[3]{#1 : #2 \rightarrow #3}
+\newcommand{\contained}{\subseteq}
+\newcommand{\restric}[2]{ #1\restriction_{#2}}
+\newcommand{\divs}{\mid}
+\newcommand{\ndivs}{\nmid}
+
+
+\begin{document}
+\maketitle
+
+\textbf{1. } Suponga que para cada $ n \in \mathbb{N} $ tenemos un espacio topológico $ (X_n, \tau_n) $, metrizable.Muestre que $ \prod_{n \in \mathbb{N}}^{}X_n $ con la topología producto es metrizable.
+
+\textit{Solución}
+
+Antes de comenzar con una demostración, pongamos en concreto unos lemas importantes.
+
+\begin{lem}
+	Suponga $ d $ es una métrica en un espacio arbitrario $ X $. Si tenemos una función $ f:[0,\infty) \rightarrow [0, \infty) $  que cumple con las características: $ f $ es estrictamente creciente, $f$ es una función cóncava y $ f(0) = 0 $, entonces $d'$ definido por $ d'= f \circ d $ es también una métrica en $X$ 
+\end{lem}
+
+\textit{Demostración} Es claro que para dos puntos $x,y \in X$, $ d'(x,y) \geq 0 $, en particular si dos puntos son iguales, la métrica $ d(x,y) = 0 \impliedby x=y $ y con la hipótesis, $ f(0)=0 $ implica que $ d' $ tiene la propiedad de los indiscernibles. También es claro que $d'$ es simétrica, entonces ya tenemos $ d' $ es una pseudométrica.
+
+Ahora suponga $ x,y,z \in X $ son arbitrarios miembros. Como $ d $ es una métrica, tenemos por desigualdad triangular:
+\[ d(x,z) \leq d(x,y) + d(y,z) \]
+Usando a propiedad de que $f$ es una función monotonica (i.e. estrictamente creciente), se sigue que:
+\begin{align}\label{ineq}
+d'(x,z) = f(d(x,z)) \leq f(d(x,y) + d(y,z)  
+\end{align} 
+Ahora utilizando la hipótesis que $f$ es una función cóncava, \emph{i.e.} para $ c \in [0,1] $ $f (cx + (1-cy)) \leq cf(x) + (1-c)f(y)$, y utilizando el hecho que $ f(0) = 0 $, tenemos que para $ a >0 $ y $ t>0 $
+\[ \frac{f(a+t) - f(a)}{(a+t)-a} \leq \frac{f(t) - f(0)}{t - 0} \implies f(a+t) - f(a \leq f(t))  \]
+De manera sugestiva,
+\[  \quad f(a+t) \leq f(a) + f(t) \]
+Sean $ a = d(x,y) $ y $ t = d(y,z) $ en la desigualdad \eqref{ineq}, obtenemos
+\[ d'(x,z) \leq f(d(x,y) + d(y,z)) \leq f(d(x,y)) + f(d(y,z)) = d'(x,y) + d'(y,z). \]
+Concluimos entonces que como $ x,y,z \in X $ eran arbitrarios. Concluimos $ d' $ es una métrica en $X$. \qed
+
+Ahora ya teniendo este soporte, procedemos a probar un teorema:
+
+\begin{thm}
+	Suponga que $ (X_k,d_k), k \in \ZZ_+ $ es una colección  contable de espacios métricos, entonces la topologia en $ X = \prod_{k \in \ZZ_+}^{} X_k $ es generada por la métrica definida por:
+	\begin{align} \label{newmetric}
+	d(x,y) = \sum_{k =1}^{\infty} \frac{2^{-k} d_k(x_k,y_k)}{1 + d_k(x_k,y_k)}  
+	\end{align} 
+\end{thm}
+
+\textit{Demostración} Aplicando el lema anterior, tomando como $f$ la función $f(x) = \frac{x}{1+x} $, esta nos muestra que para cada $ k \in \ZZ_+ $, $ 2^{-k}(f \circ d_k) $ define una métrica en $ X_k $. Por lo tanto, tenemos que $ d $ es una métrica en el producto $ X = \prod_{k \in \ZZ_+}^{}X_k $
+
+\begin{prop}
+Métrica en el producto $ X = \prod_{k \in \ZZ_+}^{}X_k $ es una métrica.
+\end{prop}
+
+\textit{Demostración}
+
+\textbf{Positiva}
+Observar que todos los términos en la sumatoria son mayores o iguales a cero. 
+
+\textbf{2.} Propiedad de los indiscernibles .
+
+Queremos ver si $ d(x,y) = 0 \iff x = y $, para ello observemos que, sabiendo que ya hemos probado $ d_k $ es una métrica:
+
+\begin{align*}
+d(x,y) = 0 \iff \sum_{k \in \ZZ_+} \lrp{2^{-k}} \frac{d_k(x_k,y_k)}{1 + d_k(x_k+y_k)} = 0  \\
+\lrp{2^{-k}} \frac{d_k(x_k,y_k)}{1 + d_k(x_k+y_k)} \quad \qt{Para todo } k\\
+d_k(x_k - y_k) = 0 \\
+x = y
+\end{align*}
+
+Tenemos entonces propiedad de los indiscernibles.
+
+\textbf{3.} Desigualdad triangular
+
+Recordemos que por las propiedades de la función $ f(x) = \frac{x}{1+x} $, y que la k-esíma métrica cumple con las siguientes propiedades: para $k \in \ZZ_+ $ $ \frac{d_k(x_k,z_k)}{1+ d_k(x_k - z_k)} \geq \frac{d_k(z_k,y_k)}{1 + d_k(x_k - y_k)} $ y similarmente $ \frac{d_k(x_k,y_k)}{1 + d_k(x_k,y_k)} \leq \frac{d_k(x_k,z_k)}{1 + d_k(x_k,z_k)} + \dfrac{d(z_k,y_k)}{1 + d(z_k,y_k)}  $.
+
+Por lo tanto vemos que:
+\begin{align*}
+\sum_{k \in \ZZ_+}^{} \frac{2^{-k}d_k(x_k-y_k)}{1+d_k(x_k-y_k)} &\leq \sum_{k \in \ZZ}^{}\lrp{2^{-k}}\lrp{\frac{d_k(x_k,z_k)}{1+d_k(x_k - z_k)} + \frac{d_k(y_k,z_k)}{1+d_k(y_k,z_k)}}  \\
+&\leq \sum_{k \in \ZZ_+}^{} \lrp{\frac{2^{-k}d_k(x_k,z_k)}{1+d_k(x_k - z_k)}} + \lrp{\frac{2^{-k}d_k(y_k,z_k)}{1+d_k(y_k - z_k)}} \\
+&\implies d(x,y) \leq d(x,z) + d(y,z)
+\end{align*}
+
+
+Concluimos entonces que es una métrica. \qed
+
+
+Ahora denote por $ \tau $ la topología producto  en $X$, y denote por $ \tau_d $ la topología en $X$ generada por la métrica $d$. Queremos ver $  \tau_d \supseteq \tau $ y $ \tau \supseteq \tau_d $
+
+Suponga que $  U = \prod_{k \in \ZZ_+}^{}U_k $ es un básico en la topología $ \tau $ del producto, considere $ z \in U $ , obsérvese, que existe un conjunto finito $ I $, tal que $ I \contained \ZZ_+ $ para el cual $ \forall k \in \ZZ_+ - I $, $ U_k = X_k $.  Observar, que para cada $ k \in I $ existe un $ \epsilon_k > 0 $ tal que (las bolas abiertas) $ B_\epsilon(k) = \set{ y \in X_k | d_k(y,z_k) < \epsilon_k} \contained U_k$. $ I $ es finito, podemos definir (y es mayor que cero) $ \epsilon = \operatorname{min}\set{2^{-k} f(\epsilon_k)| k \in I} $. Ahora, verifiquemos que la bola abierta $ B_\epsilon(z) = \set{y \in X | d(z,y) < \epsilon} $ esta contenida en $ U $; para ello, suponga $ y \in X $ tal que $ d(z,y) < \epsilon $, entonces $ \forall k \in \ZZ_+ $ y para cualquier $ k \in I $, tenemos que $ 2^{-k}(f \circ d_k)(y_k,z_k)<\epsilon  $, en otras palabras, $ d_k(y_k,z_k) < f^{-1}(2^k2^{-k}f(\epsilon_k)) = \epsilon_k $. Por lo tanto concluimos que para $  k \in \ZZ_+, y_k \in B_k  $ esta contenido en $ U_k $ y por lo tanto $ B \contained U $ y como fueron arbitrarias, $ \tau_d \supseteq \tau $.
+
+Por el otro lado, suponga que $ z \in X, \epsilon >0 $ y $ B_\epsilon(z) = \set{y \in X | d(z,y) < \epsilon} $ es un básico abierto, ahora por propiedad arquimediana escoja un $ Z \in \ZZ_+ $ tal que $ 2^{-Z} < \frac{\epsilon}{3} $ y defina $ U_k = \set{y \in X_k | d_k(y,z) < \frac{\epsilon}{2Z}} $. Para $ k > Z $ defina $ U_k = X_k $, entonces observamos que $ U = \prod_{k \in \ZZ_+}^{} U_k$ es un básico en la topología $ \tau $ en $ X $(la producto).
+
+Por ultimo, queremos ver $ U \contained B $, suponga $ y \in U $ vemos que:
+\begin{align*}
+d(z,y) &= \sum_{k=1}^{Z}2^{-k}\frac{d_k(z_k,y_k)}{1+d_k(z_k,y_k)} + \sum_{k = Z+1}^{\infty}\frac{2^{-k}d_k(z_k,y_k)}{1+d_k(z_k,y_k)} \\
+&\leq \sum_{k =1}^{Z} d_k(z_k,y_k) + \sum_{k = Z+1}^{\infty}2^{-k} \leq \sum_{k=1}^{Z}\frac{\epsilon}{2N} + 2^{-N} = \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+\end{align*}
+
+\textbf{2.} Sea $ (X,d) $ un espacio métrico separable. Muestre que $ X $ es homeomorfo a un subespacio de $ R^{\omega} $
+
+\emph{Solución}
+
+Para esto demostraremos el siguiente teorema:
+
+\begin{thm}
+	Sea $ (X,d) $ un espacio métrico separable, i.e existe $ A \contained X $ enumerable tal que $ \bar{A} = X $. Entonces muestre que $ X $ es homeomorfo a un espacio de $ \RR^[\omega] $
+	
+\end{thm}
+
+\textit{Demostración} Usando la ayuda proporcionada, $A$ enumerable, considere $ \set{a_n \in A | n \in \omega} $, y la función $ \function{f}{X}{\RR^{\omega}} $ caracterizada por $ f(x \in X) = d(x_n)_{n \in \omega} $, queremos ver que $f$ es un homomorfismo.
+
+\begin{prop}
+	$f$ es sobre, sobre su imagen \emph{``juego de palabras intencionado''}
+\end{prop}
+
+\begin{prop}
+	$f$ es inyectiva
+\end{prop}
+ 
+ \textit{Demostración} Dados $ x,y \in X $, suponga $ x \neq y $, suponga el caso en que $ x \in A $, es decir $ x = a_n $, tenemos que $ f(x) $ es cero, mientras que $ f(y) \neq 0$, es claro que $ f(x) \neq f(y) $, para el caso en que $ y \in A$, es similar. Para el ultimo caso, es decir, ambos elementos no pertenecen a $A$, es decir $ x,y $ son puntos limites. Ahora, observe que $A$ es de Hausdorff, esto debido a que $X$ es métrico, por lo tanto existe un $ \epsilon>0 $ tal que las bolas centradas en $x$ y $y$, i.e $ B_\epsilon(X), B_\epsilon(y) $ son tales que su intersección es vacía, luego existe succesion $ a_n \in A, a_n \in B_{\epsilon}(x) \implies d(y,a_n) \geq \epsilon$, luego $ f(x) \neq f(y) $.
+ 
+ Continuamos con la siguiente proposición.
+ 
+ \begin{prop}
+ 	$ \function{f'}{X}{\operatorname{Img}(F)}$ es continua 
+ \end{prop}
+ 
+ \textit{Demostración} Para esto  probaremos que $ f_n': X \rightarrow \RR $ es continua. Sea un abierto en la imagen de la forma $ f_n(x) - \epsilon, f_n(x) + \epsilon $, y sea $ y \in f^{'-1}_n(f_n(x) - \epsilon, f_n(x) + \epsilon) $, vamos a ver que $y$ es un punto interior. Defina $ \delta = \epsilon - d(x,y) $, Obsérvese que:
+ 
+ \begin{align*}
+ \epsilon &> d(a_n,x) + d(a_n,y) \\
+  &> d(a_n,x) + d(a_n,y) > d(x,y)
+  \epsilon > d(x,y) \\
+  \epsilon - d(x,y) > 0
+ \end{align*}
+ 
+ Entonces queremos ver que el abierto contenido en la base de la topologia de $X$ de la forma $ B_{\delta} \contained f^{'-1}_n(f_n(x) - \epsilon, f_n(x) + \epsilon). $ Para ello tome $u \in B_{\delta}(y)$, o en otras palabras $ d(z,y) < \epsilon - d(x,y) $, o equivalente $ d(z,y) + d(x,y) < \epsilon $ y por desigualdad triangular $ d(z,x) < \epsilon $ y tambien observar que $ z \in f^{'-1}_n(f_n(x) - \epsilon, f_n(x) + \epsilon) $ ya que $ d(a_n,z) < f(x) +\epsilon $.
+ 
+ Concluimos entonces $ \forall y \in f^{'-1}_n(f_n(x) - \epsilon, f_n(x) + \epsilon) \exists B_{\delta}(y) \contained f^{'-1}_n(f_n(x) - \epsilon, f_n(x) + \epsilon)$, y este es un abierto en $X$, por lo tanto $ \operatorname{Img}(f) $ es continua. \qed
+ 
+ Nos queda por ultimo entonces revisar que la imagen inversa es continua:
+ 
+ \begin{prop}
+ 	$ \function{f^{'-1}}{\operatorname{Img}(f)}{X} $ es continua.
+ \end{prop}
+ 
+ \textit{Demostración}
+ Como es normal, tome un basico, i.e una bola de $X$, de la forma $ B_\epsilon(x) $, para mostrar que esta funcion es continua, basta con solo mirar que $ f'(B_\epsilon(x)) $, es un abierto en la imagen. Sea $ \delta = \epsilon - \abs{f_1(x) - f_1(y)} $. Conside $U$ vecindad de $ f(y) $ de la forma:
+ \[ U = (f_1(y) - \delta, f_1(y) + \delta) \times \prod_{i \in \omega}^{} \RR_i \]
+ 
+ Sea $ f(z) \in U $, implica que $ \abs{f_1(y) - f_1(z)} < \delta $, o en otras palabras, $ \abs{f_1(x)-f_1(y)} < \epsilon $ por desiguldad triangular. Ahora, observe que si $ \abs{f_1(x)-f_1(y)} < \epsilon  $, tenemos que $ d(z,a_1) + d(z,a_1) $, lo cual es mas grande que $ d(z,x) < \epsilon $ y por ende mas pequeño que $ \epsilon $ concluimos que $ z \in B_{\epsilon}(x) $
+ 
+ Concluimos entonces que dado cualquier punto en $ f'(B_{\epsilon}(x)) $, es un punto interior, entonces concluimos que la funcion es continua 
+ 
+ \qedsymbol
+ 
+ Concluimos $f$ es un homomorfismo en su imagen, y $X$ es homeomorfo a un subespacio de $ R^\omega $
+ 
+ \textbf{3.} El problema $ 3 $ es un caso particular de la solución al problema $3$
+\end{document}
