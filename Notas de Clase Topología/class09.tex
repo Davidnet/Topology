@@ -1,0 +1,67 @@
+
+Como se debe trabjar desde afuera con los abiertos, \textbf{Recordar que es la definicion de un conjunto saturado}.
+
+\textbf{\LARGE Conexidad}
+
+\begin{define}
+	\textbf{Clopen($X$)} $ = \set{A \contain X | A \qt{ es abierto y cerrado}} $ 
+\end{define}
+
+\textbf{Definición} $ X $ es conexo si $ \operatorname{Clopen}(X) = \set{\varnothing,X} $
+
+(Si se puedo partir) es disconexo, y si puedo partirlo es conexo.
+ 
+\textbf{Definición} $ (\Omega, <) $ un orden lineal es un \textbf{continuo lineal } si:
+\begin{itemize}
+	\item $ \forall x<y \exists z \qt{s.t} x <z <y $
+	\item Todo $ A \contain L $ no vacío ,y acotado tiene supremo
+\end{itemize}
+
+\textbf{Ejemplo} $ \RR, [0,1], (a, \infty), (a,b], (I \times I)_{\qt{lex}} $
+
+Su topologia viene de un orden que contiene estas dos propiedades.
+
+\textbf{Teorema} $X$ continuo lineal $  \implies X $ 
+
+\textit{Demostración} Por contradicción, suponga que no,... \qedsymbol
+
+Es por eso que esto falla en en $ s\Omega $ Hausdorff y zero dimencional.
+
+Cero dimensional: $ 2^\omega $ no conexo, $ \omega^\omega, s_{\Omega}, \RR^2_{\qt{lex}}  $
+
+\textbf{Teorema} Sea $X$ cualquier y $ a_{\alpha} \contain X$ conexo, para $ j \in J$ y $ \cap _{\alpha \in J}A_{\alpha} $ implicas $ \bigcup_{\alpha  J} $ es conexo.
+
+\textbf{Observación} Si $ U \in \operatorname{Clopen}(X) $ y $A \contain X  $ conexo. entonces $  A \contain U $ ó $ A \contain X - U $
+
+Una alternativa:
+
+\textbf{Teorema } Sea $ X $ cualquiera, t.q $ A_{\alpha} \cap A_{\alpha} \neq \varnothing \implies Y = \bigcup_{\alpha \in J}A_\alpha $.
+
+\textbf{Teorema} $ X,Y  $ conexo $ \implies X \times Y $ conexo.
+
+Con esto concluimos $ \RR^n $ es conexo, facil.
+
+\textbf{Teorema} Imagen continua de conexo es conexo.
+
+\textit{Demostración} Suponga $ \function{f}{X}{Y} $ sobre, $ Y,X $ conexo
+
+Por lo tanto $ S^1 $ es conexo (es decir el circulo), el arete tambien es conexo.
+
+La doble flecha de es no conexo, arens lo mismo, arens-fort tampoco. $ \RR\ell $ no es. 
+
+\textbf{Teorema} Suponga $X$ es cualquiera, $ A \contain X $ conexo y $ A \contain B$ $B \contain \bar{A} $, entonces $ B $ es conexo
+
+Observar $ \RR^\omega \supseteq \RR^{n} \times \set{0}^{\omega \backslash \set{0,1, \ldots,n}} $, tenemos entonces:
+\[ \RR^{\omega} = \bigcup\RR^n \overset{conexo }{\contain} \RR^{\omega} \]
+
+Ahora $ \RR^{\omega} $ cajitas no es conexo, lo mismo $ \RR^{\omega}_{\qt{unif}} $
+
+de parcial:
+
+\[ \RR^{\infty} \contain A = \set{x \in \RR^{\omega} | x \qt{ es acotado }} \contain \RR^{\omega} \]
+es A abierto?
+
+en la toplogia producto los abiertos son gigantes en $ R^{\omega} $
+
+
+
