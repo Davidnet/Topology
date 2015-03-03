@@ -1,0 +1,173 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\author{David Cardozo}
+
+\title{Tarea \# 5 (Cocientes y conexidad)}
+\newtheorem{define}{Definición}
+\newtheorem{thm}{Teorema}
+\newtheorem{prop}{Proposición}
+\newtheorem{lem}{Lema}
+
+%Customized Commands
+\newcommand{\lrp}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\ZN}[1]{\frac{\mathbb{Z}}{#1 \mathbb{Z}}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\qt}[1]{\textrm{#1}}
+\newcommand{\function}[3]{#1 : #2 \rightarrow #3}
+\newcommand{\contained}{\subseteq}
+\newcommand{\restric}[2]{ #1\restriction_{#2}}
+\newcommand{\divs}{\mid}
+\newcommand{\ndivs}{\nmid}
+
+
+\begin{document}
+	
+\maketitle
+
+\textbf{1.} Considere la relación de equivalencia sobre $ \RR $ definida por:
+\[ x \sim y \iff x = y \vee x,y \in \ZZ \]
+Muestre que $ \RR / \sim  $ es de Fréchet-Urysohn pero no es primero contable.
+
+\textit{Solución}
+
+\begin{lem}
+	Considere la relación de equivalencia sobre $ \RR $ definida por:
+	\[ x \sim y \iff x = y \vee x,y \in \ZZ \]
+	Muestre que $ \RR / \sim  $ no es primero contable, es separable y normal
+\end{lem}
+
+\textit{Demostración}
+Considere la relación de equivalencia definida sobre $ \RR $ tal que $ x \sim y $ si $ x=y  $ ó si ambos son enteros. Considere el espacio cociente $ \RR / \sim $
+con la topología cociente y definamos $ \function{q}{\RR}{\RR / \sim} $ el mapa cociente, queremos ver que $ \RR / \sim $ es separable y también normal. Sean $A$ y $B$ conjuntos cerrados y contenidos en $ \RR / \sim  $.
+
+Caso primero, suponga que $ q(0) \not\in A \cup B $. Entonces $ q^{-1}(A) $ y $ q^{-1}(B) $ son conjuntos disjuntos cerrados en $ \RR \backslash \ZZ  $, es decir existen subconjuntos abiertos $ U,V \contained \RR \backslash \ZZ $ que son  disjuntos,y que $ q^{-1}(A) \contained U $ y $ q^{-1}(B) \contained V $, por lo tanto $ q(U), q(V) $ son abiertos y disjuntos en la topología cociente y $ A \contained q(U)$ y $ B \contained q(V) $.
+
+Caso segundo, $ q(0) \in A \cup B $, y suponga sin perdida de generalidad que $ q(0) \in A $ (la prueba es similar para $ q(0) \in B $). Tenemos entonces que $ q^{-1}(A) \qt{ y } q^{-1}(B) $ son cerrados disjuntos en $ \RR $, y que $ \ZZ \contained q^{-1}(A) $, entonces existen abiertos disjuntos $ U,V \contained \RR $ y que $ q^{-1}(A) \contained U $ y $ q^{-1}(B) \contained V $, por lo tanto $ q(U), q(V) $ son abiertos y disjuntos en la topología cociente y $ A \contained q(U)$ y $ B \contained q(V) $. Concluimos entonces que $ \RR / \sim $ es normal.
+
+Ahora suponga que $ (N_z)_{z\in \ZZ_+} $ es una secuencia de vecindades de $ q(0)  $ sobre $  \RR / \sim  $. Observar que para cada $ z \in \ZZ $, existe $ 0< \epsilon(z) < 1 $ para el cual $ (z-\epsilon(Z),z+\epsilon(z) \contained q^{-1}(N_z)$. Considere entonces el conjunto $ M = (-\infty, 1) \cup (\bigcup_{z \in \ZZ} (z - \epsilon(z)/2, z + \epsilon(z)/2)) $, tenemos entonces que $ q(M) $ is una vencidad de $ q(0) $ en $ \RR / \sim $, y $ N_z \not \contained q(M) $ para cualquier $ z \in Z $, por lo tanto $ (N_z)_{z \in \ZZ} $
+no es base de vecindades de $ q(0) $m es decir, $ \RR / \sim $ no es primero contable. \qed
+
+Nos toca, revisar entonces que no existe copia del espacio Arens-Fort en esta topología. Pues tenemos en la referencia [1], la siguiente proposición:
+
+\begin{lem}
+	Sea $W$ un espacio secuencial, entonces $ W $ es de Fréchet si y solo si no hay una copia homomorfea del esoacio de Arens-Fort
+\end{lem}
+
+
+
+
+
+\textbf{2.} Suponga que $ U $ es un subespacio abierto de $ \RR^n $. Pruebe que $ U  $ es conexo si y sólo si $ U $ es conexo por caminos. Muestre que si $ n=1 $, la hipótesos de que $ U $ es abierto se puede omitir.
+
+\textit{Solución}
+
+Empezaremos por dar una caracterización de los espacios conexos, es decir:
+
+\begin{thm}
+	Si $X$ es un espacio conexo, entonces las siguientes son equivalentes:
+	\begin{itemize}
+		\item No hay abiertos $ V,W \contained U $ tal que $ \bar{V} \cap W = \varnothing, v \cap \bar{W} = \varnothing $ y $ V \cup W = U$ (la clausura se toma con respecto a $ U $).
+		\item Los únicos subespacios de $X$ que son abiertos y cerrados a la vez son: $ \varnothing $ y $ X $.
+		\item $X$ no puede ser la unión de dos conjuntos no vacíos disjuntos 
+	\end{itemize}
+\end{thm}
+
+Estas son las afirmaciones que \emph{Munkres} empieza el capitulo de espacios convexos. El teorema anterior es necesario para poder continuar.
+
+\begin{prop}
+	Sea un abierto $ U \contained \RR^n $, entonces $ U  $ es conexo si y solo si $ U $ es conexo por caminos.
+\end{prop} 
+
+\textit{Demostración}
+
+Tenemos una dirección fácil y es:
+
+\textit{Lema}: Si un conjunto es conexo por caminos entonces es conexo.
+
+\textit{Demostración}  (Por contradicción) Sea $X$ un conjunto no conexo. Entonces, existen conjuntos disjuntos abiertos $ U,v \contained X $ tal que $ X = U \cup V $. Sea $ x \in U $ y $ y \in V $. Debido a que $ X $ es conexo por caminos, existe una función continua $ \function{f}{[0,1]}{X} $ para la cual $ f(0) = x $ y $ f(1) = y $. Considere entonces los subconjuntos $ f^{-1}(U) $ y $ f^{-1}(V) $. Observar que estos son disjuntos en $ [0,1] $ y la unión de estos es $ [0,1] $. Por la continuidad de $f$, ambos son abiertos en $ [0,1] $. Observar entonces, que dado que $ 0 \in f^{-1}(U),  1 \in f^{-1}(V)$, ambos son diferentes de vacío. Observamos entonces que hemos expresado $ [0,1] $ como la unión de dos conjuntos abiertos y disjuntos, contradiciendo el hecho que $ [0,1] $ es conexo. \qedsymbol
+
+
+
+Volviendo a la prueba original, tenemos entonces la otra dirección, queremos ver $U$ conexo, implica $ U $ es conexo por caminos (en el espacio euclidiano, en general esto es falso ).
+
+Sea $U$ conexo, gracias al teorema en la primera parte, tenemos que los únicos subespacios que son abiertos y cerrados a la vez en $ U $ son el vacío y el conjunto $ U $, queremos ver $U$ es conexo por caminos. Sea $ p \in U  $ y considere $  P(p) = \set{u \in U | \exists h  \qt{ continua, tal que } \function{h}{[0,1]}{U} \qt{ y } h(0) = p, h(1) = u  } $, teniendo este conjunto, queremos ver $ P = U $, para ello bastará ver que $ P $ es abierto y cerrado a la vez.
+
+Primero, $P$ es abierto. sea $r \in P$, como $ r \in U $, existe una vecindad de $r$ que esta en $U$, es decir para algún $ \epsilon > 0 $, existe $ B_\epsilon(r) \contained U $. Considere $ q \in B_\epsilon(r) $, observar que existe una función $ g $ tal que $ \function{g}{[0,1]}{U} $, la cual cumple con $ g(0) = q $ y $ g(1) = p $, esto debido a que ya sabemos que existe una función continua de $r$ a $q$, pues $q \in B_\epsilon(r)$ y por el lema de pegamiento, tenemos una función continua, pues esta función restringida a $ B_\epsilon(r) $ 
+es continua, y como $r \in P$, tenemos que  esta restricción la función es continua. Por lo tanto concluimos $ q \in P $ para todo $ r  \in B_\epsilon(r) $. Concluimos entonces $P$ es un conjunto abierto.
+
+Ahora, queremos ver que $ P $ es cerrado. Sea $r$ un punto limite de $P$, queremos ver $r \in P$. Considere $V = B_\epsilon(r)$ para algún $ \epsilon > 0 $, como $r$ es punto limite, se cumple que $ P \cap q \in \left( B_\epsilon(r) \backslash \set{r} \right) \neq \varnothing  $, es decir existe $ q \in P  $, para el cual $ q \in  P \cap q \in \left( B_\epsilon(r) \backslash \set{r} \right) $. En particular,$ q \in B_\epsilon(r) , q \neq r $ y $ q \in P $, es decir, existe una función continua que caracteriza el camino que va de $ p $ a $ q $, como tenemos  $ q \in B_\epsilon(r) $ existe también una función continua que da un camino de $r$ a $q$, otra vez, por teorema de pegamiento, podemos concatenar estas funciones y concluimos que existe una función $ g $ tal que $ \function{g}{[0,1]}{U} $, la cual cumple con $ g(0) = r $ y $ g(1) = p $. Por lo tanto $r \in P$. y como $r$ era un punto limite arbitrario, concluimos que $ P $ contiene todos sus puntos limites, es decir $ P $ es cerrado. 
+
+Vemos entonces que $P$ es abierto y cerrado a la vez, entonces $P$ tiene que ser $U$ o $\varnothing$, pero observemos que $P$ tiene que existe una función $ g $ tal que $ \function{g}{[0,1]}{U} $, la cual cumple con $ g(0) = p $ y $ g(1) = p $ (el trivial). por lo tanto $P = U$, lo cual significa que existe una función $ g $ tal que $ \function{g}{[0,1]}{U} $, la cual cumple con $ g(0) = p $ y $ g(1) = u $ para todo $u \in U$, como $p$ era arbitrario, tenemos entonces, que existe una función $ g $ tal que $ \function{g}{[0,1]}{U} $, la cual cumple con $ g(0) = p $ y $ g(1) = u $, para  cualquier $ p \in U $. Es decir $U$ es conexo por caminos. \qedsymbol
+
+\textbf{3.} Sea $ \function{p}{X}{Y} $ una aplicación cociente. Demuestre que si $ Y $ y los conjuntos de la forma $ p^{-1}(\set{y}) $ son conexos, entonces $X$ es conexo.
+
+%https://dyinglovegrape.wordpress.com/2010/12/03/in-euclidean-space-path-connected-if-and-only-if-connected/
+
+\textit{Solución}
+
+\begin{prop}
+	Sea $ \function{p}{X}{Y} $ una aplicación cociente. Si $ Y $ y los conjuntos de la forma $ p^{-1}(\set{y}) $ son conexos, entonces $X$ es conexo.
+\end{prop}
+
+\textit{Demostración}
+
+(\emph{Por contradicción}) Suponga que $X$ no es conexo, es decir existen $V$ y $W$ conjuntos abiertos disjuntos diferentes de vacío, para los cuales $ V \cup W = X$, como $p$ es una función sobreyectiva, entonces $ p(V) \cup p(W) = Y $. Sea $ y \in p(U) \cap p(W) $, sea $ C = p^{-1}(\set{y})$, sabemos que $C$ is conexo y los conjuntos $ C\cap V  $ y $  C \cap W $ son abiertos en $C$ y $C = (C \cap W) \cup (C \cap V)$
+
+%http://www-personal.umich.edu/~takumim/munkres-sols.pdf
+
+%http://www.math.cornell.edu/~matsumura/math4530/2010Fall4530HW5solfinal.pdf
+
+%
+
+\textbf{4.} Sea $ (x,d) $ un espacio métrico. Para cada $ p \in X, \epsilon \in \RR_+ $, definimos $ B_\epsilon(p) = \set{x \in X | d(p,x) < \epsilon} $ y $ C_\epsilon(p) = \set{x \in X | d(p,x) \leq \epsilon} $ Las siguientes afirmaciones pueden ser falsas, o verdaderas (probar, o dar un contraejemplo).
+
+\textbf{A.} Para todo $ p \in X $ y todo $ \epsilon \in \RR_+ $, $ B_\epsilon(p) $ es conexo.
+
+\textbf{Falso}, \emph{contraejemplo}
+
+Sea $X = [0,3) \cup (4,6]$ un subconjunto de $ (\RR,d) $. Observar que la bola $ B_3(2) = [0,3) \cup (4,5) $ no es convexa.
+
+\textbf{B.}
+
+\textbf{C.} Si $ C_\epsilon (p) $ es conexo entonces $ B_\epsilon (p) $ es conexo.
+
+\textbf{}
+
+
+\textbf{D.} Si $ B_\epsilon (p) $ y $ B_\delta(q) $ son conexos entonces $ B_\epsilon(p) 
+\cap B_\delta(q) $ es conexo.
+
+\textbf{Falso}, \emph{contraejemplo}:
+
+En $ \RR^2 $ sea $A = B_1((0,0)) $, y sea $ C = B_1((1,0)) $, cada uno es conexo, pero se interceptan en dos puntos, es decir un conjunto disconexo.
+
+
+\textbf{Referencias:}
+
+[1]\url{https://dantopology.wordpress.com/2010/08/18/a-note-about-the-arens-space/}
+
+
+
+
+ 
+
+
+
+
+
+\end{document}
+	
