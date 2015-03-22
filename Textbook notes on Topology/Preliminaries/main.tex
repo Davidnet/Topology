@@ -9,10 +9,26 @@
 \usepackage{amsthm}
 \author{David Cardozo}
 \title{Preliminary on Topology}
-\newtheorem{define}{Definition}
+
 \newtheorem{thm}{Theorem}
-\newtheorem{exm}{Example}
-\newtheorem{lem}{Lemma}
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem{case}{Case}
+\newtheorem{exc}{Exercise}
+
+
+\newcommand{\finer}{\supset}
+\newcommand{\sfiner}{\supseteq}
+\newcommand{\coarser}{\subset}
+\newcommand{\scoarser}{\subseteq}
+
 
 %For Chapter 1
 \usepackage{mdframed} %frames around examples 
