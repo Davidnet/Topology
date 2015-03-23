@@ -1,0 +1,177 @@
+\documentclass[11pt,a4paper,draft]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{setspace}
+\author{David Cardozo}
+\title{Tarea \#6 (Lema de Zorn y Ultrafiltros)}
+\newtheorem{prop}{Proposición}
+\newtheorem{theorem}{Teorema}
+
+
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\begin{document}
+	\maketitle
+	\textbf{1.} Suponga que $ (X, \tau) $ es un espacio de Hausdorff sin puntos aislados. Muestre (Usando el Lema de Zorn) que existe una topología $ \tau^* $ sobre $ X $ tal que:
+	\begin{enumerate}[label = \roman*]
+		\item $ \tau \subseteq \tau^* .$
+		\item $ (X,\tau^*) $ es de Hausdorff sin puntos aislados, y
+		\item Para toda topología $ \tau' \supsetneq \tau^* $ sobre $ X $, el espacio $ (X, \tau') $ tiene puntos aislados. 
+	\end{enumerate}
+\textit{Solución:}
+
+\textit{I,II y III)} 
+
+\begin{prop}
+	Existe una topología $ \tau^* $ sobre $X$ para la cual $ \tau \subseteq \tau^* $
+\end{prop}
+
+\textit{Demostración:} Considere la familia $ H $ de todas las topologías Hausdorff en $ X $, para las cuales $ \tau'  \supseteq \tau $ y $ (X,\tau') $ no tiene puntos aislados, claramente $ H \neq \varnothing $, dado que $ \tau \in H $. Observamos entonces que $ H $ esta ordenado bajo la relación de contención, y también $ H $ es un conjunto inductivo dado que para cualquier cadena, existe una cota superior. Por tanto, aplicamos el Lema de Zorn (\emph{todo conjunto inductivo tiene al menos un elemento maximal}), sea $ H^* $ un maximal en $ H $, entonces la unión $ \tau* $ de topologías que pertenecen a $ H^* $ es una topología de Hausdorff en $ X $.
+
+\begin{prop}
+	 Sean $ \tau $ y $ \tau' $ dos topologías en $ X $ tales que $ \tau \subseteq \tau' $, si $ \tau $ es de Hausdorff, entonces $ \tau' $ es también de Hausdorff.
+\end{prop}
+
+\textit{Demostración:} Suponga $ (X,\tau) $ es un espacio de Hausdorff, entonces podemos encontrar conjuntos abiertos $ U,V \in \tau $ para los cuales $ x \in U, y\in V \textrm{ y } U \cap V = \varnothing $, como $ \tau' $ es mas fina que $ \tau $, los conjuntos $ U,V $ también cumplen esta misma condición en $ \tau' $.
+
+También vemos que $ (X, \tau^*) $ no tiene puntos aislados.
+
+\begin{prop}
+	Sea $ H $ una cadena de topologías bajo la relación de contenencia en un conjunto $ X $, y $ \tau^* $ la unión de topologías que perteneces a $ H $. Si $ (X,\tau) $ para todo $ \tau \in H $ es un espacio sin puntos aislados, entonces $ (X,\tau^*) $ tampoco tiene puntos aislados.
+\end{prop}
+
+\textit{Demostración:} Por contradicción, sea $ x^* \in X $ un punto aislado en el espacio $ (X,\tau^*) $, entonces, tenemos que existe una familia finita de topologías $ \tau_1 , \tau_2, \ldots, \tau_k \in H$ y elementos $ U_1 \in \tau_1, \ldots U_k \in \tau_k $,  para los cuales $ \cap_{i_1, \ldots, i_k} U_i = \set{x^*}  $. Por otra parte, $ H $ es una cadena, por lo tanto existe $ i_\ell \in \set{1, \ldots, k} $ para el cual $ \tau_i \subset \tau_{i_\ell}  $ para todo $ i \in \set{1, \ldots, k}  $, tenemos entonces $ U_1, \ldots, U_k \in \tau_{i_\ell} $ y $ \set{x^*} = \cap_{i_1, \ldots, i_k} $ es abierto en $ (X, \tau_{i_\ell}) $, es decir, $ x^* $ es un punto aislado en $ (X,\tau_{i_\ell}) $. Contradicción.
+
+Por maximalidad de este conjunto, tenemos que se cumple la hipótesis \textit{III}. 
+
+\singlespacing
+
+\textbf{2.} Suponga que $ \mathcal{A} \subseteq \mathcal{P}(\mathbb{N}) $ tiene la \emph{propiedad fuerte de intersecciones finitas} (i.e para cualquier $ \mathcal{A_0} \subseteq \mathcal{A} $ finito, el conjunto $ \cap \mathcal{A_0}  $ es infinito). Muestre (usando el lema de Zorn) que existe un ultrafiltro no principal $ \mathcal{U} $ sobre $ \mathbb{N} $ tal que $ \mathcal{A} \subseteq \mathcal{U} $. 
+
+\textit{Solución}
+
+Para ello utilizaremos el siguiente teorema (hay que considerar los dos casos):
+
+\begin{theorem}
+	Sea $ \mathcal{R} = \set{B \in \mathcal{P}(\mathbb{N}): B \textrm{B es infinito}} $. Entonces:
+	\begin{itemize}
+		\item Siempre que $ A \subseteq \mathcal{R} $ con la \emph{propiedad fuerte de intersecciones finitas}, existe un ultrafiltro no principal $ \mathcal{U} $ en $ \mathbb{N} $ tal que $ \mathcal{A} \subseteq \mathcal{U} $
+		\item Siempre que $ A \in \mathcal{R} $, existe un ultrafiltro no principal $ \mathcal{U} $ en $ \mathbb{N} $ tal que $ A \in \mathcal{U} $
+	\end{itemize}
+\end{theorem}
+
+Necesitamos la siguiente proposición débil para mostrar el resultado:
+
+\begin{prop}
+	Sea $ \mathcal{A} \subseteq \mathcal{P}(\mathbb{N}) $, $ \mathcal{A} $ con la propiedad débil de intersecciones finitas. Entonces existe un ultrafiltro $ \mathcal{U} $ en $ \mathbb{N} $ tal que $ \mathcal{A} \subseteq \mathcal{U} $.
+\end{prop}
+
+\textit{Demostración: } Sea \[ \mathcal{T} = \set{\mathcal{B} \subseteq \mathcal{P}(\mathbb{N}):\mathcal{A} \subseteq \mathcal{B}, \mathcal{B} \textrm{ es de debil de intersecciones finitas}} \]
+Observamos que $ \mathcal{T} \neq \varnothing $ ya que $ \mathcal{A} \in \mathcal{T} $. Sea una cadena $ \mathcal{C} $ en $ \mathcal{T} $ bajo la relación de contenencia, tenemos que $ \mathcal{A} \subseteq \cup \mathcal{C} $. Considere $\mathcal{F}$ un conjunto finito de $ \cup \mathcal{C} $, entonces existe un $ \mathcal{B} \in \mathcal{C} $ tal que $ \mathcal{F} \subseteq \mathcal{B} $, lo cual implica que $ \cap \mathcal{F} \neq \varnothing $, por Lema de Zorn, $ \mathcal{\tau} $ tiene un elemento maximal $ \mathcal{U} $, que cumple con que es maximal de $ \mathcal{T} $ y es maximal de las intersecciones finitas en $ \mathbb{N} $, ya que si existiera, existiría un $ S \in \mathcal{P}(\mathbb{N}) $ para el cual $  \mathcal{U} \subseteq S $, lo cual contradice la maximailidad de $ \mathcal{U} $. Por la caracterización de $ \mathcal{U} $, $ \mathcal{U} $ es un ultrafiltro.
+\begin{proof}
+	\textit{Del Teorema} Sea $ \mathcal{B} = \set{A \subseteq \mathbb{N}: \forall B \in \mathcal{R}, A \cap B \neq \varnothing } $, observamos que el conjunto vacío $ \varnothing \neq \mathcal{B} $ ya que $ D \in \mathcal{B} $. Tome ahora $ \mathcal{C} = \mathcal{A} \cup \mathcal{B} $, queremos ver que $ \mathcal{C} $ cumple con que las intersecciones finitas son diferentes de vacío (\emph{i.e} la propiedad \emph{débil}), para ello observamos que el conjunto $ H = \set{F : F \subseteq \mathcal{A}, F \textrm{finito}} $ y $ L = \set{G : G \subseteq \mathcal{B}, G \textrm{ finito }} $, se tiene que $ (\cap F) \cap (\cap G) \neq \varnothing $, suponga entonces que existen $ F,G $ tales que $ (\cap F) \cap (\cap G) = \varnothing  $, Tenemos entonces que  $ B = \cap F \in \mathcal{R}  $, es decir $ B \cap (\cap G) = \varnothing $, o en otras palabras $B$ se puede escribir de la forma $ B = \cup_{A \in G}(B - A) $, lo cual implica que debe existir un $ A \in G  $ para el cual $ B - A \in \mathcal{R} $, pero tenemos que $ A \cap C = \varnothing  $, lo cual contradice que $  A \in \mathcal{B} $.
+	
+	 Por la proposición anterior, tenemos entonces que hay un ultrafiltro $ \mathcal{U} \in \mathbb{N} $, para el cual $ \mathcal{C} \subseteq \mathcal{U} $. Observemos que no es principal ya que, sea $ C \in \mathcal{U} $, $ D - C \notin \mathcal{U} $ y en consecuencia $ D - C \notin  \mathcal{B}$, en otras palabras hay un $ B \in \mathcal{R} $ para el cual  $ B \cap (D - C) = \varnothing  $, lo cual implica $ B \subseteq C $.
+	 
+	 Para el ultimo tome $ \mathcal{A} = \set{A} $.
+\end{proof}
+
+
+
+\singlespacing
+
+\textbf{3.} Suponga que $ \mathcal{A} \subseteq \mathcal{P}(\mathbb{N}) $ es una familia \emph{independiente}; es decir que para cualesquiera $ A_1,\ldots,A_n  \in \mathcal{A}$ y cualesquiera $ \epsilon_1, \ldots, \epsilon_n \in \set{1,-1} $ se tiene que $ A_1^{\epsilon_1} \cap \ldots A_n^{\epsilon_n} \neq \varnothing $. Muestre que existen al menos $ 2^{\left| \mathcal{A} \right|} $
+
+\textit{Solución}: En este problema, primero solucionaremos el punto \textbf{4.} 
+
+\textbf{4.} Muestre que existe una familia $ \mathcal{A} \subseteq \mathcal{P}(\mathbb{N}) $ no enumerable e independiente.
+
+
+
+Utilizaremos los siguientes resultados acerca de ultrafiltros:
+
+\textit{Proposición:} Todo filtro está contenido en un ultrafiltro.
+
+\textit{Prueba:} Sea $ \mathcal{F} $ un filtro en $ \mathbb{N} $ considere el conjunto.
+
+\[ P = \set{\mathcal{H}: \mathcal{H} \textrm{ filtro y } \mathcal{F}\subseteq \mathcal{H}} \]
+
+Entonces, vemos que $ P $ es un orden parcial bajo la relación de contenencia, y si $ \mathcal{C} \subseteq P $ es una cadena, entonces $ \cup \mathcal{C} $ es filtro que esta en $ P $ y es cota superior de $ \mathcal{C} $, otra vez, por Lema de Zorn, el conjunto $ P $ tiene un elemento maximal $ \mathcal{U} $.
+
+\textit{Corolario de la proposición:} Toda familia de subconjuntos no vacíos con la propiedad débil de intersección finita de un conjunto infinito está contenida en un ultrafiltro.
+
+\begin{theorem}
+	Existe una familia independiente de tamaño no enumerable
+\end{theorem}
+
+\begin{proof}
+	Considere los conjuntos:
+	\[ \mathcal{H} = \set{H \subseteq \mathbb{N} : H \textrm{ es finito}} \]
+	\[ \mathcal{J} = \set{J \subseteq \mathcal{H}: J \textrm{ es finito}} \]
+	sea el conjunto numerable:
+	\[ N = \mathcal{A} \times \mathcal{B} \]
+	Para cada $ X \subseteq \mathbb{N} $ se define recursivamente:
+	\[ A_X = \set{(A,\mathcal{A}): A \cap X \in \mathcal{A}}  \]
+	$ A_X^0 = A_X $ y $ A_X^1 = A_X^c $. Vemos que $ A_X^i $ es no enumerable, ahora queremos ver que es una familia \emph{independiente}, sea $  X_1, \ldots, X_k,Y_1,\ldots,Y_l \subseteq \mathcal{P}(\mathbb{N})$ para los cuales son todos distintos entre si, entonces para cualquier pareja $ (i,j) \in k \times l $ seleccionamos $ x_{i,j} \in X_i - Y_j $ ó $ x_{i,j} \in Y_i \times X_j $, entonces sea $ B = \set{x_{i,j} : (i,j) \in k \times l} $, de la manera en que se escogen los puntos tenemos entonces: $ X_i \cap B \neq Y_i \cap B $ para cualquier pareja $ (i,j) $, tenemos entonces que la familia $ \set{A_X^i: X \subseteq \mathbb{N}, i \in \set{0,1}} $ es una familia independiente no enumerable.
+	
+\end{proof}
+
+Ahora probamos la cantidad de diferentes ultrafiltros es al menos $  2^{\left| \mathcal{A} \right|}  $
+
+\begin{theorem}
+	Hay $ 2^{\set{A_X^i: X \subseteq \mathbb{N}, i \in \set{0,1}}} $ ultrafiltros diferentes sobre $ \mathbb{N} $
+\end{theorem} 
+
+\begin{proof}
+	Por el anterior Teorema, tenemos que existe una familia \emph{independiente} $ \set{A_u^i : u \subseteq \mathbb{N}, i \in \set{0,1}, \left| u \right| < \mathcal{P}(\mathbb{N}) } $. Sea $ f:\mathcal{P}(\mathbb{N}) \rightarrow \set{0,1} $ una función, la familia   $ \set{A_u^{f(u)} : u \subseteq \mathbb{N}, i \in \set{0,1}, \left| u \right| < \mathcal{P}(\mathbb{N}) } $ todavía tiene la propiedad débil de intersecciones, y por el primer teorema que mostramos para este problema, vemos que esta contenida en un ultrafiltro. Observamos que si $ f \neq g $, los ultrafiltros son diferentes. Tenemos entonces que existen $  2^{\set{A_X^i: X \subseteq \mathbb{N}, i \in \set{0,1}}} $ ultrafiltros diferentes sobre $ \mathbb{N} $.
+\end{proof}
+
+
+\singlespacing
+
+
+\textbf{5.} Muestre que existe una familia $ \mathcal{A} \subseteq \mathcal{P}(\mathbb{N}) $ no enumerable y \emph{casi disyunta}.
+
+\textit{Solución}
+
+Para ello probaremos similarmente:
+
+\begin{theorem}
+	Existe una familia \emph{casi disyunta} de subconjuntos de $ \mathbb{Q} $ no enumerable.
+	
+\end{theorem}
+
+\begin{proof}
+	Sea $ r \in \mathbb{R} $, y sea $ (q_n^r)_{n \in \mathbb{N}} $ una secuencia de números racionales que no es constante y que converge a $ r $. Ahora sea, $ A_r = \set{q_n^r : n \in \mathbb{N}} $. Para dos pares $ s,r \in \mathbb{R} $, $ r \neq s $, sea $ \epsilon > 0 $ el cual 
+	\[ (s - \epsilon, s+\epsilon) \cap (r - \epsilon, r + \epsilon) = \varnothing \]
+	Observar que $ A_s \cap (s - \epsilon, s+\epsilon)  $ y $ A_r \cap  (r - \epsilon, r + \epsilon) $ son ambos cofinitos y esto implica que $ A_s \cap A_r  $ es finito. Por lo tanto $ \set{A_r : r \in \mathbb{R}} $ es una familia \emph{casi disyunta} no enumerable.
+\end{proof}
+
+Esta tarea fue hecha conjuntamente con Juanita Duque.
+
+
+
+\textbf{\LARGE Referencias}
+
+1. Gutiérrez,Francisco, \textit{La Compactificación de Stone-Cech De Un Espacio Discreto}.
+
+2. Willard, Stephen, \textit{General Topology} 
+
+3. Steen, Arthur, \textit{Counterexamples in Topology}
+
+4. Arkhangel'skii, Ponomarev, \textit{Fundamentals of General Topology}
+
+5. Geschke, ALMOST DISJOINT AND INDEPENDENT FAMILIES
+
+
+
+
+\end{document}
