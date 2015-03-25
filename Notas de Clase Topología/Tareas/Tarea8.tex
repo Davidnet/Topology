@@ -1,0 +1,131 @@
+\documentclass[11pt,a4paper,draft]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\author{David Cardozo}
+\title{Tarea \# 8 Compactificación}
+
+\newtheorem{thm}{Teorema}
+\newtheorem{lem}[thm]{Lema}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definición}[section]
+\newtheorem{conj}{Conjetura}[section]
+\newtheorem{exmp}{Ejemplo}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Observación}
+\newtheorem*{note}{Nota}
+\newtheorem{case}{Caso}
+\newtheorem{exc}{Ejercicio}
+\newtheorem{prop}{Proposición}
+
+\newcommand{\abs}[1]{ \left\lbrace #1 \right\rbrace }
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\RR}{\mathbb{R}}
+
+\begin{document}
+\maketitle
+\begin{exc}
+	Sea $ X $ un espacio de Hausdorff y suponga que todo subespacio abierto de $ X $ (en particular $ X $ mismo) es compacto. Pruebe que $ X $ es finito.
+\end{exc}
+\textit{Solución}: Queremos ver la siguiente proposición:
+
+\begin{thm}
+	Si $ X $ un espacio de Hausdorff y todo subespacio abierto de $ X $ (en particular $ X $ mismo) es compacto, entonces $ X $ es finito.
+\end{thm}
+\begin{proof}
+	En aras de obtener una contradicción, suponga que $ X $ es de Hausdorff infinito, en especial, observe que todos los conjuntos con un solo elemento, \textit{los singletons}, son cerrados, como el espacio es infinito y de Hausdorff, los singletons son a su vez compactos y abiertos, luego, existe una cobertura que contiene todos los singletons, que no tiene una subcobertura finita, contradiciendo una de nuestras hipótesis. Concluimos entonces $ X $ es  finito
+\end{proof}
+
+\begin{exc}
+	Use el ejercicio anterior y el ejercicio 4 de la tarea 7 para mosttar que si $ f : \mathbb{N} \to \mathbb{N} $ es una función cualquiera entonces existe $ g : \beta\mathbb{N} \to \beta\mathbb{N} $ continua tal que $ g \upharpoonright \mathbb{N} = f $ (aquí estamos identificando los naturales con los ultrafiltros principales de la manera obvia).
+\end{exc}
+
+\textit{Solución}
+
+Para ello utilizaremos las siguientes proposiciones y definiciones:
+
+Denotamos por $ \mathcal{C}(X) $ al conjunto  de funciones continuas definidas de $ X $ en $ \mathbb{R} $ 
+\begin{defn}
+	Dado un espacio $ X $ y una función $ f \in \mathcal{C}(X) $, se llama cero-conjunto de $ f $ al conjunto $ f^{-1}(0) $ y se escribe  $ Z(f) $
+\end{defn}
+
+\begin{lem}
+	Dados $ A,B $ cero-conjuntos disjuntos en un espacio topologico $ X $, existen $ U,V $ abiertos sobre el mismo espacio tales que $ A \subset U $, $ B \subset V $ y $ U \cap V = \varnothing $
+\end{lem}
+
+\begin{proof}
+	Dados $ A,B $ cero conjuntos. Existen $ f,g \in \mathcal{C}(X) $ para los cuales $ A = f^{-1}(0), B = g^{-1} $. Considere:
+	\begin{align}
+	C = \set{x \in X | g(x) \geq f(x)} \\
+	D = \set{x \in X | f(x) \geq g(x)}
+	\end{align}
+	Como $ f,g $ son funciones continuas, tenemos que $ C,D $ son conjuntos cerrados. Tomen entonces $ U = X - D $ y $ V = X - C $, entonces $ U \cap V = \varnothing $
+\end{proof}
+
+La siguiente proposición la encontramos en la siguiente trabajo de referencia, ultrafiltros y convergencia \footnote{http://www.virtual.unal.edu.co/cursos/ciencias/2001005/lecciones/cap6/cap6lec4.pdf}
+\begin{prop}
+	Dada $ \set{\mathcal{U}_n} $ una familia finita de ultrafiltros en $ X $ existe una familia $ \set{A_n} $ de cero-conjuntos disjuntos dos a dos tales que $ A_n \in \mathcal{U}_n $ para cada $ n $
+\end{prop}
+
+Para ver que $ \beta \mathbb{N} $ es compacto, vemos primero que es de Hausdorff. Sean $ p,q $ dos puntos diferentes en $ \beta \mathbb{N} $. Por la proposición anterior, existen dos cero-conjuntos disjuntos $ A,B $ tales que $ A \in A^p =   \set{ U | U \textrm{ cero-conjunto }, p \in U  }  $, que es la colección de ultrafiltros que converge a $ p $, similarmente $ B \in B^q $, ahora con el lema $ 1 $, obtenemos que que existen abiertos $ U,V \in \mathbb{N} $ tales que $  A \subset U, B \subset B, U \cap B = \varnothing $. Tambien, se tienen abiertos $ U_0, V_0 \in \beta\mathbb{N} $ para los cuales $ U_0 \cap = U, V_0 \cap V = X $. Luego tenemos que:
+$ p \in \overline{A} \subset U_0 $ y $ q \in \overline{B} \subset V_0 $, por lo tanto $ \beta \mathbb{N} $ es de Hausdorff.
+Ahora considere que la colección $ B  $ de cerrados básicos $ \overline{Z} = \operatorname{Cl}_{\beta \mathbb{N} Z} $ con la propiedad de intersección finita. es una base para algún ultra filtro en $ X $, por lo tanto esta contenida en algun filtro de la forma $ A^p $ dado que:
+\[ p \in \cap_{z \in A^p} \overline{Z} = \cap_{z \in A^p } \operatorname{Cl}_{\beta \mathbb{N} } Z \subset \cap_{z \in B} \operatorname{Cl}_{\beta \mathbb{N}} Z \]
+		
+Como esta intersección no es vacía. Tenemos que $ \beta \mathbb{N} $ es compacto.
+\begin{exc}
+	Use el ejercicio anterior y el ejercicio 4 de la tarea 7 para mosttar que si $ f : \mathbb{N} \to \mathbb{N} $ es una función cualquiera entonces existe $ g : \beta\mathbb{N} \to \beta\mathbb{N} $ continua tal que $ g \upharpoonright \mathbb{N} = f $ (aquí estamos identificando los naturales con los ultrafiltros principales de la manera obvia).
+\end{exc}
+
+\textit{Solución}
+Empezamos por poner en estándar de identificar cualquier $ n $.
+
+\begin{rem}
+	Identificamos $ n $ con el ultrafiltro principal generado por el numero $ n $
+\end{rem}
+
+Dado una función $ f: \mathbb{N} \rightarrow \mathbb{N} $. Queremos encontrar $ g: \beta \mathbb{N} \rightarrow \beta \mathbb{N} $, observemos que la definición dada por:
+
+\[  g(\mathfrak{U}) = \lim_{n \rightarrow \mathfrak{U}} f(n)  \]
+
+Observamos que la imagen es una sucesión de ultrafiltros por cada $ f(n) $ para cada $ n $.
+\begin{case}
+	Queremos ver que la restricción de esta función es $ f $ 
+\end{case} 
+Observamos que para $ x \in \mathbb{N} $:
+\[ g(\set{m})= \lim\limits_{n \rightarrow m} \set{f(n)} = f(m) \]
+\begin{case}
+	$ g $ es continua
+\end{case}
+Observamos que usando la ayuda, recurrimos al punto 4 de la tarea 7, para ello, observamos que $ \beta\mathbb{N} $ es de Hausdorff y compacto (probado en el punto anterior). Concluimos entonces que $ g $  es continua.
+
+
+\begin{exc}
+	Muestre que para cualquier espacio $ X $ las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item $ X $ es compacto y metrizable.
+		\item $ X $ es homeomorfo a un subespacio cerrado de $ [0,1]^\omega $.
+	\end{enumerate}
+\end{exc}
+
+\textit{Solución}
+
+Queremos ver:
+
+\begin{lem}
+	Si $ X $ es homeomorfo a un subespacio cerrado de $ [0,1]^\omega $, entonces $ X $ es compacto y metrizable. 
+\end{lem}
+
+\begin{proof}
+	Sea $ X $ homeomorfo a un subespacio cerrado de $ [0,1]^\omega $,  El conjunto $ [0,1]^\omega $ es un producto de compactos, entonces por Teorema de Tychonoff, $ [0,1]^\omega $ es compacto, y cualquier cerrado de $ [0,1]^\omega $ es compacto y como subespacio de $ \mathbb{R}^\omega  $ es metrizable, concluimos que $ X $ es compacto y metrizable.
+\end{proof}
+
+
+\end{document}
