@@ -1,0 +1,137 @@
+\subsection{Exercises}
+
+\begin{exc}
+	Prove that a set of $ n $ (different) elements has exactly $ 2^n  $ (different) subsets.
+\end{exc}
+\begin{sol}
+	The following is an application of the principle of mathematical induction. First, we observe that for a set with only one element, there are exactly $ 2 = 2^1 $, now suppose that the statement holds for a set with $ n $ elements, now consider the set with $ n+1 $ elements, say $ \set{x_1, \ldots,x_{n+1}} $, observe that we can write this set $ \set{x_1, \ldots, x_n} \cup \set{x_{n+1}} $, using out induction hypothesis, the set $ \set{x_1, \ldots, x_n} $ has $ 2^n $ subsets, and the subsets of $ \set{x_1, \ldots x_{n+1}} $ can be obtained as:
+	\[ \overbrace{2^n}^\text{subsets of n} + \underbrace{2^n}_\text{adding the new element}\]
+	and we have
+	\[ 2^n + 2^n = 2^n(1+1) = 2^{n+1} \]
+\end{sol}
+\begin{exc}
+	Formulate and prove DeMorgan's laws for arbitrary unions and intersections.
+\end{exc}
+\begin{sol}
+	\begin{prop}
+		Let $ \mathcal{A} $ a family of sets, then 
+		\[ X - \bigcup_{A \in \mathcal{A}} A = \bigcap_{ A \in \mathcal{A}} X - A \] 
+	\end{prop}
+	\begin{proof}
+		Let $ x \in X - \bigcup_{A \in \mathcal{A}} A $, so that $ x \notin \cup_{A \in \mathcal{A}} A $, or in other words, $ \forall A \in \mathcal{A} (x \not \in A)$, and since $ x \in X $, we can combine the last two statements to give $ \forall A \in \mathcal{A} (x \in X $ and $ x \not \in A $, more suggestively, $ \forall A \in \mathcal{A} ( x \in X - A) $, and finally this implies $ \cap_{A \in \mathcal{A}} X-A  $
+	\end{proof}
+	\begin{prop}
+		Let $ \mathcal{A} $ be a family of sets, then:
+		\[ X - \bigcap_{A \in \mathcal{A}} A = \bigcup_{A \in \mathcal{A}} X - A \]
+	\end{prop}
+	Which again is similar.
+\end{sol}
+
+\subsection{Functions}
+\begin{exc}
+	Let $ f: A \rightarrow B $. Let $ A_0 \subset A $ and $ B_0 \subset B $.
+	\begin{itemize}
+		\item Show that $ A_0 \subset f^{-1}(f(A_0)) $ and that the equality holds if $ f $ is injective.
+		\item Show that $ f(f^{-1}(B_0)) \subset B_0 $ and that equality holds if $ f $ is surjective.
+	\end{itemize}
+\end{exc}
+
+\begin{sol}
+	
+	\begin{itemize}
+		\item Let $ a \in A_0 $, so that $ f(a) \in f(A_0) $, and this is the condition for that $ a \in f^{-1}f(A_0) $. Now for the converse, we add the hypothesis that $ f $ is injective, so let $ x \in f^{-1}(f(A_0)) $, observe that this implies $ f(x) \in f(A_0) $, or in other words $ f(x) = f(a)  $ for at least one $ a \in A_0 $, since $ f $ is injective, then $ x = a $ and $ x \in A_0 $.
+		
+		\item Let $ b \in f(f\inv (B_0))$, so that $ b = f(a) $ for some $ a \in f\inv (B_0) $, similarly $ f(a) \in B_0 $ so that $ b \in B_0 $. Now for the converse we add the hypothesis that $ f $ is surjective, now let $ b \in B_0 $, since $ f $ is surjective, there exist $ a \in A $ for which $ f(a) = b $ so that $ a \in f\inv(B_0) $, and combining the two previous statements we get $ b \in f(f\inv(B_0))  $
+	\end{itemize}
+
+\end{sol}
+
+\begin{exc}
+	Let $ f: A \rightarrow B $ and let $ A_i \subset A $ and $ B_i \subset B $ for $ i = 0 $ and $ i =1 $. Show that $ f\inv $ preserves inclusions, unions, intersections, and differences of sets
+	\begin{itemize}
+		\item $ B_0 \cap B_1 \implies f\inv(B_0) \subset f\inv(B_1) $.
+		\item $ f\inv(B_0 \cup B_1) = f\inv(B_0) \cup f\inv(B_1) $
+	\end{itemize}
+\end{exc}
+
+\begin{sol}
+	\begin{itemize}
+		\item Suppose $ B_0 \subset B_1 $, let $ x \in f\inv(B_0) $ that is $ f(x) = b $ for some $ b \in B_0 $, that is, $ b \in B_1 $, and this last assertion allow us to conclude that $ f\inv(B_0) \subset f\inv(B_1) $
+		\item Let $ a \in f\inv(B_0 \cup B_1) $, that is $ f(a) = b $ for an element $ b $ that either belongs to $ B_0 $ or $ B_1 $, so that $ a \in f\inv(B_0) \cup f\inv(B_1) $. Conversely, \ldots
+	\end{itemize}	
+\end{sol}
+
+\begin{exc}
+	Prove the following:
+	\begin{itemize}
+		\item 
+		\[ f\inv(\bigcup_{i \in I} A_i) = \bigcup_{i \in I}  f\inv(A_i)  \]
+	\end{itemize}
+\end{exc}
+\begin{sol}
+	``$ \subset $''
+	\begin{align*}
+	x \in f\inv \left( \bigcup_{i \in I} A_i \right) &\implies \exists j  \in I (f(x) \in A_j) \\
+	&\implies x \in \bigcup_{i \in I} f\inv(A_i)
+	\end{align*}
+	``$ \supset $'', let $ A_i = B_i $ for all $ i \in I $
+	\begin{align*}
+	x \in \bigcup_{i \in I}f\inv (B_i) &\implies \exists j \in I (x \in f\inv(B_j)) \\
+	&\implies f(x) \in B_j \implies f(x) \in \bigcup_{i \in I} B_i \\
+	&\implies x \in f\inv\lrp{\bigcup_{i \in I} B_i}
+	\end{align*}
+\end{sol}
+\begin{exc}
+	Prove the following:
+	\[ f\inv(\bigcap_{i \in I} B_i) = \bigcap_{i \in I} f\inv(B_i) \]
+\end{exc}
+\begin{sol}
+	``$ \subset $''
+	\begin{align*}
+	x \in f\inv\lrp{\bigcap_{i \in I} B_i} &\implies f(x) \in \bigcap_{i \in I} B_i\\
+	&\implies \forall i \in I ( f(x) \in B_i) \implies \forall i \in I (x \in  f^{-1}(B_i)) \\
+	&\implies x \in \bigcap_{i \in I} f\inv (B_i)
+	\end{align*}
+	``$ \supset $''
+	\begin{align*}
+	x \in \bigcap_{i \in I} f\inv(B_i) &\implies \forall i \in I ( f(x) \in B_i) \\
+	&\implies f(x) \in \bigcap_{i \in I} B_i \\
+	&\implies x \in f\inv\lrp{\bigcap_{i \in I} B_i}
+	\end{align*}
+\end{sol}
+\begin{exc}
+	Prove that for an arbitrary class of sets:
+	\[ f(\bigcup_{i \in I} A_i) = \bigcup_{i \in I} f(A_i) \]
+\end{exc}
+\begin{sol}
+	Let us take $ y \in f(\bigcup_{i \in I} A_i) $, so that $ y = f(x)  $ for some $ x \in A_i $, say $ x \in A_j $, then $ y \in f(A_j) $ so that $  y \in \bigcup_{i \in I} f(A_i) $
+\end{sol}
+\begin{exc}
+	Let $ f: A \rightarrow B $ and $ g: B \rightarrow C $.
+	\begin{itemize}
+		\item $ C_0 \subset C $, show that $ (g \circ f)\inv (C_0) = f\inv(g\inv(C_0)) $
+		\item If $ f $ and $ g $ are injective, show that $ g \circ f $ is injective.
+		\item If $ g \circ f $ is injective, what can you say about the injectivity of $ f $ and $ g $?
+		\item If $ f $ and $ g $ are surjective, show that $ g \circ f $ is surjective.
+		\item If $ g \circ f $ is surjective, what can you say about surjectivity of $ f $ and $ g $
+	\end{itemize}
+\end{exc}
+\begin{sol}
+\begin{itemize}
+		\item Let $ a \in (g \circ f)\inv (C_0) $, so that $ (g \circ f)(a) \in C_0 $, and $ g(f(a)) \in C_0 $ so that, $ f(a) \in g\inv(C_0) $ which finally $ a \in f\inv(g\inv(C_0)) $
+	\item Let $ a,a' \in A $, suppose that $ (g \circ f)(a) = (g \circ f)(a') $, by definition $ g(f(a)) = g(f(a')) $, since $ g $ is injective, we have then $ f(a) = f(a') $ again $ f $ is injective, then $ a = a' $ so that $ g \circ f $ is injective.
+	\item If $ g \circ f $ is injective, then $ f $ is injective.
+	\begin{proof}
+		Let $ a_1, a_2 \in A $, such that $ f(a_1) = f(a_2) $, then $ g(f(a_1)) = g(f(a_2)) $, so that $ (g \circ f)(a_1) = (g \circ f)(a_2) $ and since $ g \circ f $ is injective $ a_1 = a_2 $
+	\end{proof}
+	\item Let $ c \in C $, since the function $ g $ is surjective there exist $ b $ such that $ c = g(b) $, now, since $ b \in B $ and $ f $ is injective, there exist $ a \in A $ for which $ c = g(f(a)) = (g \circ f)(a) $, since $ c $ was arbitrary we have shown then $ g \circ f $ is surjective.
+	\item We propose that $ g $ is surjective.
+	\begin{proof}
+		Let $ c \in C $. Since $ g \circ f $ is surjective, there exist $ a $ such that $ g(f(a)) = c $. By definition for some $ b \in B $, $ f(a) = b $, and $ g(b) = c $, then $ g $ is surjective.
+	\end{proof}
+	\item
+	\begin{thm}
+		Let $ f: A \rightarrow B $ and $ g: B \rightarrow C $ and $ g \circ f $ is bijective, then $ f $ is injective and $ g $ is surjective	
+	\end{thm}
+\end{itemize}
+\end{sol}

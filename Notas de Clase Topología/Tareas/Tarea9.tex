@@ -1,0 +1,155 @@
+\documentclass[notitlepage]{report}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\author{David Cardozo}
+\title{Compacidad contable, Secuencial y Local}
+
+\newtheorem{thm}{Teorema}
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{prop}{Proposición}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definición}[section]
+\newtheorem{conj}{Conjetura}[section]
+\newtheorem{exm}{Ejemplo}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Observación}
+\newtheorem*{note}{Nota}
+\newtheorem{case}{Caso}
+\newtheorem{exc}{Ejercicio}
+\newtheorem*{sol}{Solución}
+
+
+
+
+
+
+
+
+
+%For Chapter 1
+\usepackage{mdframed} %frames around examples 
+\usepackage{mathtools}
+
+%Customized Commands
+\newcommand{\lrp}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\ZN}[1]{\frac{\mathbb{Z}}{#1 \mathbb{Z}}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\qt}[1]{\textrm{#1}}
+\newcommand{\function}[3]{#1 : #2 \rightarrow #3}
+\newcommand{\contained}{\subset}
+\newcommand{\restric}[2]{ #1\restriction_{#2}}
+\newcommand{\divs}{\mid}
+\newcommand{\ndivs}{\nmid}
+\newcommand{\gothic}[1]{\mathfrak{#1}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\betan}{\beta \mathbb{N}}
+
+\begin{document}
+\maketitle
+
+\begin{exc}
+	Pruebe que toda sucesión convergente en $ \beta \NN   $ es eventualmente constante.
+\end{exc}
+	\begin{thm}
+		Toda sucesión convergente en $ \beta \NN   $ es eventualmente constante.
+	\end{thm}
+\begin{sol}
+	Suponga que $ \sigma = p_{n \in \NN} $ es una secuencia no eventualmente constante en $ \betan $y converge a algún $ p \in \betan $, sin perdida de generalidad asuma que es uno a uno y que $ p_n \neq p $ para todo $ n \in \NN $. Tenemos entonces que $ D \coloneqq \set{p_n : n \in \NN} $ es un conjunto discreto en $ \betan $, entonces para $ n $ existen clopens disjuntos dos a dos $ U_n $ que cumplen con que $ p_n \in U_n $, ahora sea $ \mathcal{U} = \set{U_n : n \in \NN} $.
+	
+	Ahora defina $ f: D \rightarrow [0,1] $ mediante $ f(n) = 0 $ si $ n $ es par y $ f(n) = 1 $ si $ n  $ es impar; $ D $ es discreto, y por lo tanto $ f $ es una función continua. Consideremos ahora 
+	\begin{align*}
+	\bar{f}: \mathbb{N} &\rightarrow [0,1] \\
+	n&\mapsto\begin{cases}
+	f(p_k),&\text{si }n\in\NN\cap U_k\\\\
+	0,&\text{si }n\in\NN\setminus\bigcup\mathcal{U}\;.
+	\end{cases}
+	\end{align*}
+	Ahora considere $ F $ como la extensión $ \bar{f} $  a $ \betan $ (en mismas condiciones de la anterior tarea). Cada $ U_n $ es un clopen en $ \betan $, por lo tanto $ \overline{\NN \cap U_n}x = \overline{U_n} = U_n $, y (como en la anterior tarea) encontramos que $  \restric{F}{D} = f $, $ F(p_n) = f(p_n) $ y $ p \in \overline{D} $, tal que:
+	\[ F(p) = \lim\limits_{n \rightarrow \infty} \]
+	y vemos que este limite no existe, entonces es contradictorio.
+\end{sol}
+
+
+\begin{exc}
+	Sea $ I = \mathcal{P}(\NN) $ y para cada $ n \in \NN $ sea $ p_n: I \rightarrow \set{0,1} $ la función definida por $ p_n(A) = 1 $ si $ n \in A $ y $ p_n(A) = 0 $ si $ n \not\in A $. Note que $ P \coloneqq  \set{p_n : n \in \NN} $ es un subconjunto del espacio producto $ \set{0,1}^I $. Demuestre que para todo $ x \in \set{0,1}^I $ se tiene que:
+	\[ x \in \overline{P} \iff \set{A \in I : x(A) = 1} \textrm{ es un ultrafiltro sobre } \NN\]
+\end{exc}
+\begin{sol}
+	Ver Ejercicio 1 para un lado de la demotración.
+\end{sol}
+\begin{exc}
+	Muestre que $ [0,1]^\omega $ con la topología uniforme no es contablemente compacto
+\end{exc}
+\begin{sol}
+	Para este ejercicio, utilizaremos la siguiente proposición:
+	\begin{prop}
+		Sea $ [0,1]^\omega $ un espacio topológico con la topología uniforme. Existe un subconjunto infinito de este espacio que no tiene punto limite.
+	\end{prop}
+	\begin{proof}
+		Sea $ d $ la métrica uniforme. Escoja $ c \in (0,1] $. Sea $ A = \set{0,c}^\omega \subset [0,1]^\omega $. Observar que si $ a $ y $ b $ son puntos distintos en $ A $ entonces $ d(a,b) = c $. Para cualquier $ x $ la bola $ B_{c/3}(x) $ tiene diámetro menor o igual a $ 2c/3 $, por lo tanto $ B_{c/3}(x) $ no puede tener mas de un punto de $ A $, se tiene entonces que $ x $ no es un punto limite de $ A $
+	\end{proof}
+	Ahora para el gran teorema:
+	\begin{thm}
+		 $ [0,1]^\omega $ con la topología uniforme no es contablemente compacto
+	\end{thm}
+	\begin{proof}
+		Sea $ d $ la métrica uniforme. Suponga que $ [0,1]^\omega $  es localmente compacto, particular en $ 0 $. Entonces $ 0 \in U \subset C $, donde $ U $ abierto y $ C $ compacto. Entonces existe $ \epsilon > 0 $ para la cual $ B_\epsilon (0) \subset U $. Ahora damos nota que $ A = \set{0, \epsilon/3}^\omega \subset B_\epsilon(0) $, tenemos entonces $ A \subset C $, y por teorema 28.2 $ A $ tiene un punto limite en $ C $, pero esto contradice nuestro hecho de la proposición anterior.
+	\end{proof}
+\end{sol}
+\begin{exc}
+	Muestre que $ \QQ $ con la topología heredada de $ \RR  $ no es localmente compacto.
+\end{exc}
+\begin{sol}
+	Sea $ X = \QQ \cap [0,1] $. Queremos ver que si $ U \subset X $ entonces $ U  $ no tiene clausura compacta. Siendo que $ X $ es $ T_2 $ esto muestra entonces que no es localmente compacto. Sea $ x \in X $ y $ \epsilon > 0 $ y tome un irracional $ \pi \in B_\epsilon(x) $. Ahora sea $  x - \epsilon $ y $ b = x + \epsilon $, por lo tanto la siguiente es una cobertura abierta de $ B_\epsilon(x) $ sin ninguna subcobertura finita:
+	\[ \mathcal{O} \coloneqq \set{((a,\pi-\frac{1}{n}) \cup (\pi + \dfrac{1}{n},b)) \cap \QQ : n \in \NN} \]
+	Esto debido a que observamos que $ \mathcal{O} $ es una cubierta que podría ser ordenada bajo $ \supset $ y que ningún $ n  $ cubre $ B_\epsilon(x) $
+\end{sol}
+\begin{exc}
+	Demuestre que para cualquier familia $ \set{X_\alpha : \alpha \in I} $ de espacios topológicos las siguientes afirmaciones son equivalentes:
+	\begin{itemize}
+		\item $ \prod_{\alpha \in I}^{} X_\alpha $ es localmente compacto
+		\item Cada $ X_\alpha $ es localmente compacto y $ \set{\alpha \in I: X_\alpha \textrm{ no es compacto }} $ es finito.
+	\end{itemize}
+\end{exc}
+\begin{sol}
+	Previamente haremos unas observaciones pertinentes:
+	\begin{rem}
+		Producto \emph{finito} de espacios localmente compactos es localmente compacto
+	\end{rem}
+	\begin{proof}
+		Sean $ X \times Y $ localmente compactos, y sean $ (x,y) \in X \times Y $. Entonces existe una vecindad abierta $ U $ de $ x  $en $ X $ para la cual la clausura $ \overline{U} \subset X $ es compacto. De manera similar, existe una vecindad abierta $ V $ de $ y $ en $ Y $ cuya clausura $ \overline{V} \subset Y $  es compacto. Entonces $ U \times V \subset X \times Y $ es una vecindad abierta de $ (x,y) $ y $  U \times V \subset \overline{U} \times \overline{V} $ (ver Munkres p.101 \#9) donde el conjunto cerrado $  \overline{U} \times \overline{V} \subset X \times Y $ es compacto por Tychonoff. Entonces el producto $ X \times Y $ de dos espacios localmente compactos es localmente compacto; por inducción, extendemos este resultado para casos finitos.
+		
+	\end{proof}
+	Teniendo esto en claro veamos que:
+	\begin{thm}
+		Si $ \prod X_\alpha $ es localmente compacto, entonces cada $ X_\alpha $ es localmente compacto y $ X_\alpha $ es compacto para todo $ \alpha $ salvo finitos.
+	\end{thm}
+	\begin{proof}
+		Asuma que el producto $ \prod X_\alpha $ es localmente compacto. Observar que las proyecciones son continuas y abiertas, también, como la propiedad de localmente compacto es preservada bajo mapas abiertos y continuos ya que estos conservan compacidad y abiertos, tenemos qe $ X_\alpha  $ es localmente compacto para todo $ \alpha $. Sea $ x_\alpha \in X_\alpha $ y tome $ x = (x_\alpha)_\alpha \in X $. Por hipótesis, existe un básico abierto vecindad $ U = \prod_\alpha U_\alpha $  de $ x $ en $ X $ para la cual la clausura $ \overline{U} \subset X $ es compacto. Como en la observación de atrás, observamos que $  \overline{U} = \prod_{i = 1}^{n} \overline{U}_{\alpha_i} \times \prod_{\alpha \in A'} X_\alpha $. Ahora, la proyección $ \pi_a : X \rightarrow X_\alpha $ es continua, y cada $ \overline{U_{\alpha_i}} $, es compacto para cada $ i = 1, \ldots,n  $ y $ X_\alpha $ es compacto para $ \alpha \in A'  $. Tenemos entonces $ X_\alpha $ es localmente compacto para $ i = 1,\ldots n $.
+		
+	\end{proof}
+Para nuestro segundo caso:
+	\begin{thm}
+	Conversa del teorema anterior asumiendo el Teorema de Tychonoff
+	\end{thm}
+	\begin{proof}
+		Suponga $ X = \prod_{\alpha \in A} X_\alpha $ donde cada $ X_\alpha $ es localmente compacto. También $ A = \set{\alpha_1, \ldots, \alpha_n} \cup A' $ tal que $X_\alpha $ es compacto para $ \alpha \in A' $. Por teorema de Tychonoff, $ \prod_{\alpha \in A'} X_\alpha$ es compacto, entonces el producto:
+		\[ X = X_{\alpha_1} \times \cdots \times X_{\alpha_n}  \times \prod_{\alpha \in A'} X_\alpha \]
+		Es localmente compacto por la observación al principio de la solución, siendo un producto finito de $ n+1 $ espacios localmente compactos.
+	\end{proof}
+\end{sol}
+\end{document}

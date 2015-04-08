@@ -1,0 +1,126 @@
+\documentclass[11pt,a4paper,draft]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\author{David Cardozo}
+\title{Topology without tears}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}{Proposition}[section]
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem{case}{Case}
+\newtheorem{exc}{Exercise}
+\newtheorem*{sol}{Solution}
+
+
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\finer}{\supset}
+\newcommand{\sfiner}{\supseteq}
+\newcommand{\coarser}{\subset}
+\newcommand{\scoarser}{\subseteq}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\T}{\tau}
+
+\begin{document}
+	The following are notes from the textbook \textit{Topology without tears}.
+	\section{Topological Spaces}
+	\subsection{Topology}
+	\begin{defn}
+		Let $ X $ be a nonempty set. A set $ \tau $ of subsets of $ X $ is said to be a \textbf{topology} on $ X $ if:
+		\begin{itemize}
+			\item $ X $ and the empty set $ \varnothing $, belong to $ \tau $.
+			\item The union of any (finite or infinite) number of sets in $ \tau $ belongs to $ \tau $, and
+			\item The intersection of any two sets in $ \tau $ belongs to $ \tau $.
+		\end{itemize}
+		The pair $ (X,\tau) $ is called a \textbf{topological space}
+	\end{defn}
+	\begin{exmp}
+		Let $ \NN $ be the set of all natural numbers (that is, the set of all positive integers), and let $ \tau $ consists of $ \NN, \varnothing $ and all finite subsets of $ \NN $. Then, $ \tau $ is \textbf{not} a topology on $ \mathbb{N} $ since observe that:
+		\[ \set{2} \cup \set{3} \set{4} \cup \ldots \set{n} \cup = \set{2,3,\ldots,n,\ldots}  \]
+		of members of $ \tau $ does not belong to $ \tau $.
+	\end{exmp}
+	\begin{defn}
+		Let $ X $ be any non-empty set and let $ \tau $ be the collection of all subsets of $ X $. Then $ \tau $ is called the \textbf{discrete topology} on the set $ X $. The topological space $ (X,\tau) $ is called a \textbf{discrete space}
+	\end{defn}
+	\begin{defn}
+		Let $ X $ be any non-empty set and $ \tau = \set{X,\tau} $ is called the \textbf{indiscrete topology}, and $ (X,\tau) $ is said to be an \textbf{indiscrete space}
+	\end{defn}
+	\begin{prop}
+		If $ (X,\tau) $ is a topological space such that, for every $ x \in X $, the singleton set $ \set{x} $ is in $ \tau $, then $ \tau $ is the discrete topology.
+	\end{prop}
+	\begin{proof}
+		Let us observe that every set is an union of its singleton subsets. Let $ S $ be any subset of $ X $. Then:
+		\[ \bigcup_{s \in S} \set{s} = S \]
+		since each $ \set{s} \in \tau$, then $ \cup \set{s} \in \tau$ and the above equation holds for any arbitrary subset of $ X $ so that $ \tau $ is the discrete topology.
+	\end{proof}
+	\subsection*{Exercises}
+	\begin{exc}
+		Let $ (X,\tau) $ be any topological space. Verify that \textbf{the intersection of any finite number of members of $ \T  $} is a member of $ \T $
+	\end{exc}
+	\begin{proof}
+		Suppose that $ (X,\T) $ is a topological space. First, observe that the intersection of two members of $ \tau $ is in $ \tau $, since it is a topology. Second, suppose that for $ n $ number of members of $ \tau $ their intersection is on $ \tau $, call it $ \varLambda $, consider an element of $ \tau $, say $ \varTheta $ and observe that $ \varLambda \cap \vartheta  $ is on $ \tau $ since it is the intersection of two sets of $ \tau $, therefore by the principle of mathematical induction. The intersection of any finite numbers of members $ \tau $ is in $ \tau $
+	\end{proof}
+	\begin{exc}
+		Let $ \RR $ be the set of all real numbers. Prove that each of the following collections of subsets of $ \RR $ is a topology.
+		\begin{itemize}
+			\item $ \T_1 $ consists of $ \RR, \varnothing $, and every interval $ (-n,n) $ for $ n $ any positive integer.
+		\end{itemize}
+	\end{exc}
+	\begin{sol}
+		We check the 3 conditions:
+		\begin{itemize}
+			\item $ \RR, \varnothing \in \tau $
+			\item The union of sets in $ \tau $ is in $ \tau $
+			
+			
+		\end{itemize}
+	\end{sol}
+\subsection{OPen Sets, Closed Sets, and Clopen Sets}
+\begin{defn}
+	Let $ (X,\tau) $ be any topological space. Then the members of $ \tau $ are said to be \textbf{open sets}.
+\end{defn}
+\begin{prop}
+	If $ (X,\tau) $ is any topological space, then:
+	\begin{itemize}
+	\item $ X, \varnothing $ are open sets,
+	\item the union of any (finite or infinite ) number of open sets is an open set, and 
+	\item the intersection of any finite numbers of open sets is an open set
+	\end{itemize}
+\begin{defn}
+	A subset $ S $ of a topological space $ (X, \tau) $ is said to be \textbf{clopen} if it is both open and closed in $ (X,\tau) $
+\end{defn}
+Let us observe that in any topological space $ X, \varnothing $ are clopen, in the discrete space all the subsets of $ X $ are clopen, and in the indiscrete space the only clopen subsets are $ X $  and $ \varnothing $
+\end{prop}
+\subsection{Exercises}
+\begin{exc}
+	Let $ (X,\tau) $ be a topological space with the property that every subset is closed, prove that it is a discrete space.
+\end{exc}
+\begin{proof}
+	Assume that every subset is closed, then, the complement of any subset is open, since the subset was arbitrary, we conclude that every subset is open, that is, the topology is the discrete topology.
+\end{proof}
+\begin{exc}
+	Observe that if $ (X, \tau) $ is a discrete space or an indiscrete space, then every open set is a clopen set. Find a topology $ \tau $ on the set $ X = \set{a,b,c,d} $ which is not discrete and is not indiscrete but has the property that every open set is clopen.
+\end{exc}
+\begin{sol}
+	By inspection we see that $ \tau = \set{X, \varnothing, \set{a}, \set{b,c,d}} $ is a topology on $ X $ that every open set is also closed, and is different from the discrete and indiscrete topology
+\end{sol}
+\begin{exc}
+	Let $ X $ be an infinite set. If $\tau  $ is a topology on $ X $ such that every infinite subset of $ X $ is closed, prove that $ \tau $ is the discrete topology.
+\end{exc}
+\begin{sol}
+	
+\end{sol}
+\end{document}
