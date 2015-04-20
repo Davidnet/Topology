@@ -1,0 +1,231 @@
+\documentclass[notitlepage]{report}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\author{David Cardozo}
+\title{Axiomas de Separación y enumerabilidad}
+
+\newtheorem{thm}{Teorema}
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{cor}{Corolario}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definición}[section]
+\newtheorem{conj}{Conjetura}[section]
+\newtheorem{exm}{Ejemplo}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Observación}
+\newtheorem*{note}{Nota}
+\newtheorem{case}{Caso}
+\newtheorem{exc}{Ejercicio}
+\newtheorem*{sol}{Solución}
+
+
+
+
+
+
+
+
+
+%For Chapter 1
+\usepackage{mdframed} %frames around examples 
+\usepackage{mathtools}
+
+%Customized Commands
+\newcommand{\lrp}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\ZN}[1]{\frac{\mathbb{Z}}{#1 \mathbb{Z}}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\qt}[1]{\textrm{#1}}
+\newcommand{\function}[3]{#1 : #2 \rightarrow #3}
+\newcommand{\contained}{\subset}
+\newcommand{\restric}[2]{ #1\restriction_{#2}}
+\newcommand{\divs}{\mid}
+\newcommand{\ndivs}{\nmid}
+\newcommand{\gothic}[1]{\mathfrak{#1}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\betan}{\beta \mathbb{N}}
+\newcommand{\closure}[1]{ #1^{\textrm{cl}}}
+\renewcommand*{\complement}[1]{#1^\text{c}}
+\newcommand{\operatorclausure}[2]{\operatorname{Cl}_{#1}\lrp{#2}}
+
+
+\begin{document}
+\maketitle
+\begin{exc}
+	Sea $ X $ un espacio de Hausdorff, regular y separable. Muestre que existe una base $ \mathcal{B} $ para la topología de $ X $ tal que $ |\mathcal{B}|\leq 2^{\aleph_0} $.
+\end{exc}
+
+\begin{sol}
+	Empezamos con unas pequeñas proposiciones para tener una base conjunta en las definiciones:
+	\begin{prop}
+		Si $ (X,\tau) $ es un espacio topologico, $ X $ es regular si y solo si para cualquier punto $ x $ y cualquier conjunto cerrado $ F $ con $ x \notin F $, existe un conjunto abierto $ U $ para el cual $ x \in U $ y $ \closure{U} \cap F = \varnothing $
+	\end{prop}
+	\begin{proof}
+		Si $ X $ es regular y si $ x $ y $ F $ son dados, podemos escoger conjuntos abiertos disjuntos $ U,V $ tal que $ x \in U $ y $ F \subseteq V $. Entonces el conjunto cerrado $ \complement{V}  $ cumple con $ \complement{V} \supseteq U $ y $ \complement{V} \cap F = \varnothing $, tenemos entonces que $ \complement{V} \supseteq \closure{U} $ y $ \closure{U} \cap F = \varnothing $. Para la otra dirección, suponga que $ x $ y $ F $ son dados y $ U $ es un abierto que cumple que $ x \in U $ y $ \complement{U} \cap F = \varnothing $ podemos ver entonces que si escogemos $ V = \complement{\lrp{\closure{U}}} $, vemos que $ x \in U, f \subseteq V $ y $ U \cap V = \varnothing $
+	\end{proof}
+	Ahora requerimos del siguiente resultado:
+	\begin{lem}
+		Cualquier espacio regular de Lindelöf es normal.
+	\end{lem}
+	\begin{proof}
+		Sea $ X $ regular y de Lindelöf, y sean $ E,F $ conjuntos cerrados disjuntos de $ X $ dados. Por regularidad y la anterior proposición, cada punto de $ E $ tiene una vecindad abierta cuya clausura es disyunta de $ F $. Entonces sea $ \mathcal{U} $ es conjunto de los conjuntos abiertos con clausura disyunta de $ F $ que cubre $ E $. Similarmente, sea $ \mathcal{V} $ el conjunto de los conjuntos abiertos cuyas clausuras disyuntas de $ E $ cubre $ F $. Tenemos entonces que $ \mathcal{U} \cup \mathcal{V} \cup \left\lbrace X - \lrp{E \cup F} \right\rbrace $ es una cobertura abierta de $ X $. Como $ X $ es de Lindelöf, existen secuencias de conjuntos $ U_n $ en $ \mathcal{U} $ y $ V_n $ en $ \mathcal{V} $ tal que \( E \subseteq \cup_{n = 1}^\infty \) y $ F \subseteq \cup_{n = 1}^\infty V_n $. Considere:
+		\[ U_n' = U_n - \bigcup_{k \leq n} \closure{V_k} \quad \text{and} \quad V_n' = V_n - \bigcup_{k \leq n} \closure{U_k} \]
+		Observemos que cuando $ m \leq n $, tenemos que $ V_m \subseteq \cup_{ k \leq n} \closure{V_k} $ Entonces $ U_n' \cap V_m = \varnothing $, y tenemos que el conjunto mas pequeño también cumple con $ U_n' \cap V_m' $ es vacío. De manera análoga tenemos que $ U_n' \cap V_m' $  es vacío para $ m \geq n $, por lo tanto $ U_n' \cap V_m' = \varnothing $ para todo $ n,m $. Ahora definamos:
+		\[ U = \bigcup_{n = 1}^\infty U_n' \quad \textrm{and} \quad V = \bigcup_{m = 1}^\infty V_m' \]
+		Entonces $ U \cap V = \cup_{n,m} \lrp{U_n' \cap V_m'} = \varnothing $, también:
+		\[ E \cap U = E \cap \bigcup_{n = 1}^{\infty}\lrp{U_n - \bigcup_{k \leq n} \closure{V_k}} \supseteq E \cap \bigcup_{n = 1}^\infty \lrp{U_n - \bigcup_{k = 1}^{\infty }\closure{V_k}} = E \cap \lrp{X - \bigcup_{k = 1}\infty \closure{V_k}} \] 
+		donde la ultima igualdad es dada porque $ \set{U_n} $ cubre a $ E $. El lado derecho acá es igual a $ E $ dado que $ \closure{V_k}  \subseteq X - E $ para todo $ k $, entones $ E \subseteq U $, de manera similar $ F \subseteq V $, y concluimos entonces la demostración.
+	\end{proof}
+	\begin{cor}
+		Todo espacio regular separable es normal.
+	\end{cor}
+	\begin{proof}
+		Un espacio separable es automáticamente de Lindelöf, y el corolario sigue del teorema anterior.
+	\end{proof}
+	Teniendo este resultado, requerimos de una versión alternativa del teorema de teorema de metrización de Urysohn que citamos del libro \cite{basicranal} (pag.476 ) la prueba basa en que todo espacio regular separable es normal y se pide como ejercicio mostrar.
+	\begin{thm}
+		Cualquier espacio separable regular de Hausdorff es metrizable
+	\end{thm}	
+	y concluimos con la siguiente proposición:
+	\begin{prop}
+		Todo espacio métrico separable tiene una base contable
+	\end{prop}
+	\begin{proof}
+		Suponga $ X $ es separable, entonces existe un subconjunto denso contable $ E $. Para cada $ e_i \in E $, sea $ N_q(e_i) $ una vecindad con radio racional $ q $ centrada en $ e_i $. Considere $ \set{V_\alpha} = \set{N_q(e_i) | q \in \QQ, i \in \NN} $, entonces $ \set{V_\alpha} $ es una colleción contable de conjuntos contables. Sea $ x $ un punto arbitrario en $ X $ y sea $ G $ abierto en $ X $ tal que $ x \in G $, tenemos entonces que $ x $ esta en el interior de $ G $, y por lo tanto existe una vecindad $ N_r(x) $ para la cual $ N_r(x) \subseteq G $, observemos que podemos escoger un racional $ q $ para el cual $ 0 < q < \frac{r}{2} $ para el cual $ x \in N_q(x) \subseteq N_r(x) \subseteq G $. Como $ E $ es denso en $ x $, cualquier vecindad de $ x $ contiene algún $ e \in E $, entonces $ e \in N_q(x) $ lo cual implica que $ d(x,e) < q  $, pero tambien tenemos $ d(e,x)  < q $ lo cual implica que $ x \in N_q(e) $ y $ N_q(e) \in \set{V_\alpha} $. Ahora queremos ver que $ N_q(e) \subseteq G $. Sea $ y $ cualquier punto en $ N_q(e) $ sabemos que $ d(x,e) <q, d(e,y) <q $, por lo tanto $ d(x,y) < d(x,e) + d(e,y) = 2q $. Pero hemos definido $ q $ para que cumpla $ 0 < q < \frac{r}{2} $ entonces sabemos que $ d(x,y) < r $, es decir, que para cualquier $ y \in N_q(e) $, tenemos $ y \in N_r(x) $, equivalentemente $ N_q(e) \subseteq N_r(x) $, y podemos escoger $ r $ tal que $ N_r(x) \subseteq G $, por lo tanto $ N_q(e) \subseteq G $.
+		Concluimos entonces que $ \set{V_\alpha} $ es una base para $ X $.
+	\end{proof}
+\end{sol}
+
+\begin{exc}
+	Muestre que si $ X $ es un espacio de Hausdorff, las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+	\item Todo subespacio de $ X $ es normal.
+	\item Si $ A,B \subseteq X $ son tales que $ \overline{A}\cap B = A \cap \overline{B}=\emptyset $, entonces existen $ U $ y $ V $ abiertos disyuntos en $ X $ con $ A \subseteq U $ y $ B \subseteq V $.
+	
+\end{enumerate}
+
+\end{exc}
+\begin{sol}
+	Vamos a cambiar un poco la notación para poder decir específicamente donde vamos a tomar la clausura, e.g $ \operatorclausure{X}{A} $
+	
+	\begin{itemize}
+		\item 	(a) $ \implies  $ (b) Sea $ A $ y $ B $ dados con las condiciones que $ A \cap \operatorclausure{X}{B} = \operatorclausure{X}{A} \cap B = \varnothing $. Sea $ Y $ el subespacio $ X - \lrp{\operatorclausure{X}{A} \cap \operatorclausure{X}{B}} $. Ahora, ambos $ A $ y $ B $ están contenidos en $ Y $. Esto debido a que:
+		\begin{align*}
+		A \cap \lrp{\operatorclausure{X}{A} \cap \operatorclausure{X}{B}} &= \lrp{A \cap \operatorclausure{X}{B}} \cap \operatorclausure{X}{A} \\
+		&= \varnothing \cap \operatorclausure{X}{A} \\
+		&= \varnothing
+		\end{align*}
+		Similarmente:
+		\begin{align*}
+		B \cap \lrp{\operatorclausure{X}{A} \cap \operatorclausure{X}{B}} &= \lrp{\operatorclausure{X}{A} \cap B} \cap \operatorclausure{X}{B} \\
+		&= \varnothing \cap \operatorclausure{X}{B} \\
+		&= \varnothing
+		\end{align*}
+		Ahora, queremos ver que $ \operatorclausure{Y}{A} $ y $ \operatorclausure{Y}{B} $ son conjuntos disyuntos y cerrados en Y. Para observar que son disyuntos, observamos el hecho que:
+		\[ \operatorclausure{Y}{A} \cap \operatorclausure{Y}{B} \cap Y \subseteq \operatorclausure{X}{A} \operatorclausure{X}{B} \cap Y \]
+		\begin{equation}
+		= \varnothing
+		\end{equation}
+		Para observar que son cerrados, damos cuenta que la clausura de un conjunto en un espacio topologico es siempre cerrado en ese espacio.
+		Como todo subespacio de $ X $ es normal, tenemos que $ Y $ también es normal, entonces, existen conjuntos $ U,V $ abiertos en $ Y $ (por lo tanto también abiertos en $ X $) con la propiedad $ \operatorclausure{Y}{A} \subset U $ y $ \operatorclausure{Y}{B} \subset V $. Como $ A $ y $ B $ ambos están contenidos en $ Y $, tenemos también que $ \operatorclausure{Y}{A} \supset A $ y $ \operatorclausure{Y}{B} \subset B $, tenemos entonces $ U \supset A $ y $ V \supset B $ como queríamos.
+		
+		\item (b) $ \implies  $ (a). Sea $ Y $ un subespacio de $ X $ y sean $ A,B $ cerrados disyuntos subconjuntos de $ Y $. Observamos que:
+		\begin{align*}
+		A \cap \operatorclausure{X}{B} &= A \cap B \\
+		&= \varnothing
+		\end{align*}
+		Similarmente,
+		\begin{align*}
+		\operatorclausure{X}{A} \cap B &= A \cap B \\
+		&= \varnothing
+		\end{align*}
+		Por hipótesis, existen conjuntos abiertos disyuntos $ U $ y $ V $ de $ X $ con $  U \supset A $ y $ V \supset B $. Se tiene entonces que los conjuntos $ U \cap Y $ y $ V \cap Y $ son abiertos disjuntos con la propiedad de $ A \subset \lrp{U \cap Y} $ y $ B \subset \lrp{V \cap Y} $. Por lo tanto, $ Y $ es normal, y como $ Y $ fue arbitrario, todo subespacio de $ X $ es normal.
+	\end{itemize}
+	
+\end{sol}
+
+
+\begin{exc}
+	\begin{enumerate}
+		\item Para cada $ \alpha \in \{2,3,4\} $ pruebe que si $ X $ es un subespacio $ T_\alpha $ y existe $ f:X \to Y $ continua, cerrada y sobreyectiva, entonces $ Y $ también es $ T_\alpha $. (Solo lo haremos para $ \alpha = 4 $)
+		\end{enumerate}
+\end{exc}
+\begin{sol}
+	Primero utilizaremos este resultado antes de dar una prueba completa:
+	\begin{lem}
+		Sea $ f: x \rightarrow Y $ una función continua y cerrada, $ B \subseteq Y $ y $ U $ abierto en $ X $ tal que $ f \inv (B) \subseteq U $ entonces existe $ V  $ abierto en $ Y $ tal que $ B \subseteq Y $ y $ f\inv (V) \subset U $.
+	\end{lem}
+	\begin{proof}
+		Definamos $ V = Y - f(X - U) $ que es abierto si $ f $ es cerrada. Si $ f\inv (B) \subseteq U $, entonces $ B \subseteq V $, en particular, si $ y \in B $ entonces $ f\inv(y) \subseteq U $ o en otras palabras, $ f\inv(y) \cap (X - U) = \varnothing $, luego $ y = f \circ f\inv(y) \in Y - f(X - U) = V $, además, $ f\inv(V) = f\inv(Y - F(X - U)) = X - f\inv \circ f(X-U) \subset X - (X - U) = U $
+	\end{proof}
+	Ahora si probamos el teorema importante:
+	\begin{thm}
+		Sea $ X $ un espacio normal ($ T_4 $) y $ f: X \rightarrow Y $ una función continua, cerrada y sobreyectiva, entonces $ Y $ es normal ($ T_4 $).
+	\end{thm}
+	\begin{proof}
+		Sea $ f: \rightarrow Y $ una función continua, sobre y cerrada, dados $ A,B $ cerrados disjuntos en $ Y $ se sigue que $ f\inv(A)  $ y $  f\inv(B) $ son cerrados disjuntos en $ X $, como $ X $ es normal existirán $ U,V $ abiertos en $ X $ para los cuales $ f\inv(A) \subseteq U, f\inv(B) \subseteq V $ y $ U \cap V = \varnothing $. Por el lema anterior, existirán $ U_A, V_B $ abiertos en $ Y $  para los cuales $ A \subseteq U_A $ y $ f\inv(U_A) \subseteq U, B \subseteq V_B $  y $ f\inv(V_B) \subseteq V $. Observamos que $ f\inv (U_a \cap V_b) = f\inv(U_A) \cap f\inv(V_B) \subseteq U \cap V = \varnothing $, por tanto $ U_A \cap V_B = \varnothing $ y concluimos que $ Y $ es normal. Como la imagen de un $ T_1 $ bajo una función continua y cerrada también es $ T_1 $, esta proposición, se cumple para $ T_4 $
+	\end{proof}
+\end{sol}
+
+\begin{exc}
+	Muestre que cualquier espacio topológico es imagen continua de un espacio métrico (en particular $ T_4 $) y por lo tanto la hipótesis en (a) de que $ f $ es cerrada no se puede omitir.
+	
+\end{exc}
+\begin{sol}
+	Para cualquier espacio topologico $ (X, \tau) $ considere $ (X,\tau') $ con la topología discreta (por lo tanto metrizable y normal), tenemos entonces que la función:
+	\begin{align*}
+	I: (X,\tau') &\rightarrow (X,\tau) \\
+	x &\rightarrow x
+	\end{align*}
+	es decir la función identidad. Observamos que esta función es continua y es sobreyectiva. Por lo tanto todo espacio topologico es imagen continua de un espacio métrico.
+\end{sol}
+\begin{exc}
+	Demuestre que todo espacio cuya topología provenga de un orden lineal es regular.
+\end{exc}
+\begin{sol}
+	Primero probamos que toda topología que provenga de un orden lineal ses de Hausdorff. Entonces, Sea $  (X, < )$  sea un orden lineal y sea $ (X,\tau) $ el espacio topologico con la topología del orden, sean $ a,b \in X $ y sin perdida de generalización considere $ a < b $ . Sea:
+	\[ A = \set{x \in X | a < x <b} \]
+	Ahora, si $ A $ es vacío, tenemos entonces $ a \in ( \infty,b) $, $ b \in (a, \infty) $, con $ (-\infty,b) \cap (a, \infty) = \varnothing $, y tenemos que $ X $ es de Hausdorff. Ahora, si $ A $ es no vacío, entonces $ a \in (-\infty, x), b \in (x,\infty)$, y $ (-\infty, x) \cap (x,\infty) = \varnothing $ para cualquier $ x \in A $ y por lo tanto $ X $ es de Hausdorff.
+	
+	Ahora, en particular, los singletons en $ X $ son cerrados. Suponga ahora que $ x \in X $ y $ A $ es un conjunto cerrado disyunto de $ x $, entonces existe un elemento base $ (a,b) $ que contiene a $ x $ y es disyunto de $ A $. Sea $ a' \in (a,x) $ y sea $ U_1 = (-\infty,a'), V_1 = (a',\infty) $, si tal $ a' $ no existe, entonces sea $ U_1 = (-\infty,x), V_1 = (a,\infty)$, exactamente como el argumento anterior, para ambos casos los dos conjuntos son disyuntos. Similarmente, considere $ b' \in (x,b) $ y si existe tal $ b' $, considere $ U_2 = (b', \infty), V_2 = (\infty, b') $ y si no existe tal $ b' $, sea   $ U_2 = (x,\infty), V_2 = (-\infty,b)$, otra vez ambos conjuntos son disyuntos para cualquier caso, y tenemos $ U = U_1 \cup U_2 $ y $ V = V_1 \cap V_2 $ que son disyuntos. Mas aún, $ x \in V $ y $ A \subset U $, y por lo tanto, $ X $ es regular.
+\end{sol}
+
+\begin{exc}
+	Todo espacio cuya topología provenga de un orden lineal es normal
+\end{exc}
+
+\begin{sol}
+	Sea $ H $ y $ K $ conjuntos separados de $ X $. Sea $ x \in H $, entonces existe un abierto $ V_x $ para el cual $ x \in V_x \subseteq X - K $, similarmente para cualquier $ x \in K $, existe un abierto $ V_x $ para el cual $ x \in V_x \subseteq X - H $. Sea $ V_H = \bigcup_{x \in H} V_x $ y sea $ V_K = \bigcup_{x \in K} V_x $, tenemos entonces $ H \subseteq V_h, K \subseteq V_k $ y $ V_h \cup V_k \subseteq x - ( H \cup K) $. Ahora sea $ V = V_h \cap V_k $. Si $ V = \varnothing $ ya tendríamos la proposición, entonces suponga $ V \neq \varnothing $. Definimos una relación de equivalencia $ \sim $ de la siguiente manera: $ p \sim q $ si y solo si $ [\min\set{p,q}, \max \set{p,q}] \subseteq V $, observamos que las clases de equivalencia son las componentes ordenadas de $ V $. Sea $ T \subseteq V $ y $ T $ contenga exactamente un punto de cada $ \sim  $ clase. Suponga $ x \in H $ y $ p,q \in V_x \cap T $ con $ p < q $, queremos ver ahora que $ p < x < q$. Suponga $ x <p $. Como $ p \in T \subseteq C $, existe $ y \in K $ para el cual $  p \in V_y, [x,q] \subseteq V_x \subseteq x - K $, por lo tanto $ y \notin [x,q] $. Si $ y < x $ tendiramos $ x \in [x,p] \subset V_y \cap H = \varnothing $, tendríamos entonces $ x <p <q <y $, pero esto contradeciría la escogencia de $ p $ y $ q $ porque $ p \sim q $. Similarmente $ x\in K $ y $ p,q \in V_x \cap T $ con $ p <q $, tenemos $ p <x<q $, observamos que de una esto implica que $ \abs{V_x \cap T} \leq 2 $ para todo $ x \in H \cup K $, ahora sea $ p \in T $, considere $ H_p = \set{x \in H | p \in V_x} $ y $ K_p = \set{x \in K | p \in V_x} $, observamos entonces que para cualquier miembro de esots elementos se cumple: $ K_p < p < H_p $. Ahora definamos para cada $ x \in H \cup K $, $ W_x $ abierto de la siguiente manera:
+	\[ W_x=\begin{cases}V_x,&\text{si }V_x\cap T=\varnothing\\V_x\cap(p,\infty),&\text{si }V_x\cap T=\{p\}\text{ y }p<x\\V_x\cap(/-\infty,p),&\text{si }V_x\cap T=\{p\}\text{ y }x<p\\V_x\cap(p,q),&\text{si }V_x\cap T=\{p,q\}\text{ y }p<x<q\;.\end{cases} \]
+	Sean:
+	\[ W_h = \cup_{x \in H} W_x \quad \textrm{y } \quad W_k = \cup_{x \in K}W_x \]
+	entonces tenemos $ W_h, W_k $ abiertos, $ H \subseteq W_h $ y $ K \subset W_k $ que cumplen: $ W_h \cap W_k = \varnothing $ 
+\end{sol}
+
+
+\begin{thebibliography}{1}
+	
+	\bibitem{basicranal}
+	Anthony Knapp,
+	\emph{Basic Real Analysis},
+	Birkhäuser, Berlin,
+	1st edition,
+	2005.
+	
+\end{thebibliography}
+
+\end{document}

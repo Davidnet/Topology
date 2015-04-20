@@ -99,5 +99,183 @@ Now, we can define the least upper bound property.
 		\item Consider $ x,y,z $ such that $ xSy $ and $ ySz $, that is: for all $ i \in I $ the following holds: $ xS_i y $ and $ y S_i z $ since each $ S_i  $ is transitive $ x S_i z $ for all  $ i $ so that $ xSz $
 	\end{enumerate}
 \end{sol}
+\begin{exc}
+	Show that an element in an ordered set has at most one immediate successor and at most one immediate predecessor. Show that a subset of an ordered set has at most one smallest element and at most one largest element
+\end{exc}
+\begin{sol}
+	Consider an element $ a  \in A$, and $ A $ is an ordered set, consider $ a < b $, and $ a < b' $ for which:
+	\[ \set{x | a <x < b} = \varnothing \]
+	and
+	\[ \set{x | a < x < b'} = \varnothing \]
+	that is, both $ b $ and $ b' $ are the immediate successor of $ a $, then observe that if $ b < b' $, b will be in the first set, similarly $ b' $ will be in the second set, we conclude then that $ b = b' $.
+	
+	For the second question, arguments similar as above holds. 
+\end{sol}
+\begin{exc}
+	Prove the following:
+	\begin{thm}
+		If an ordered set $ A $ has the least upper bound property, then it has the greatest lower bound property.
+	\end{thm}
+\end{exc}
+\begin{sol}
+	\begin{proof}
+		Consider $ B $ subset of $ A $, and $ B $ is bounded below, consider the set of all lower bounds for $ B $, since $ B  $ is bounded below the above set is nonempty, and bounded above with every element of $ B $ since it is bounded above, it has a supremum, so that we have shown that the set of all lower bounds has a supremum, that is $ B $ has an infimum. Therefore $ A $ has the greatest lowest bound property.
+	\end{proof}
+	
+\end{sol}
 
+\begin{exc}
+	If $ C $ is a relation on a set $ A $, define a new relation $ D $ on $ A $ by letting $ (b,a) \in D $ if $ (a,b) \in C $
+	\begin{itemize}
+		\item show that $ C $ is symmetric if and only if $ C = D $.
+		\item Show that if $ C $ is an order relation, $ D $ is also an order relation.
+		\item Prove the converse of the theorem in Exercise 13.
+	\end{itemize}
+\end{exc}
+\begin{sol}
+	\begin{itemize}
+		\item Suppose $ C $ is symmetric, consider $ xDy $ or in other words $ yCx $, since $ C $ is symmetric, we have that $ xCy $, so that $ yDx $, and $ D $ is symmetric. Similar argument above for the case of $ D $ being the symmetric relation is similar.
+		\item Suppose $ C $ is an order relation, since $ C $ is an order, then either $ yDx $ or $ xDy $ holds, similar for non-reflexivity, and transitivity.
+	\end{itemize}
+	For the converse of the above theorem.
+	
+\end{sol}
 
+\section{The Integers and the Real Numbers}
+
+\begin{defn}
+	A \textbf{binary opertation} on a set $ A $ is a function $ f $ mapping $ A \times A $ into $ A $
+\end{defn}
+
+We assume there exists a set $ \RR $ called the set of \textbf{real numbers}, two binary operations $ + $ and $ \cdot $ on $ \RR $, called the addition and multiplication operations, respectively, and on order relation $ < $ on $ \RR $, such that the following properties hold:
+
+\textit{Algebraic Properties}
+
+\begin{enumerate}
+	\item $ (x + y) + z = x + (y + z) $
+	
+	$ (x \cdot y) \cdot z = x \cdot (y \cdot z) $ for all $ x,y,z $ in $ \RR $
+	
+	\item $ x + y = y + x $,
+	
+	$ x \cdot y = y \cdot x $ for all $ x,y  $ in $ \RR $
+	
+	\item There exists a unique element of $ \RR $ called \textbf{zero}, denoted by $ 0 $, such that $ x + 0 = x $ for all $ x \in \RR $.
+	
+	There exists a unique element of $ \RR $ called \textbf{one}, different from $ 0 $ and denoted by $ 1 $, such that $ x \cdot 1 = x $ for all $ x \in \RR $.
+	
+	\item For each $ x $ in $ \RR $, there exist a unique $ y  $ in $ \RR $ such that $ x + y = 0 $.
+	
+	For each $ x $ in $ \RR $ different from $ 0 $, there exists a unique $ y $ in $ \RR $ such that $ x \cdot y = 1 $.
+	
+	\item $ x \cdot (y + z) = (x \cdot y) + (x \cdot z) $ for all $ x,y,z \in \RR $
+\end{enumerate}
+
+A \textit{Mixed algebraic and Order Property}.
+
+\begin{enumerate}
+	\setcounter{enumi}{5}
+	\item if $ x > y $, then $ x +z > y + z $
+	\item $ x > y $ and $ z > 0 $, then $ x\cdot z > y \cdot z $
+\end{enumerate}
+
+\textit{Order Properties}
+
+\begin{enumerate}
+	\setcounter{enumi}{7}
+	\item The order relation $ < $ has the least upper bound property.
+	\item If $ x < y $, there exists an element $ z $ such that $ x < z $ and $ z < y $
+\end{enumerate}
+
+If a set $ A $ with operations $ +, \cdot $ holds the (1) - (5) properties, then it is a \textbf{Field}, if it also has an order relation that holds (6) then it is an ordered field, if this order also gold (7) and (8) hen it is a \textbf{linear continuum}.
+
+\begin{defn}
+	A subset $ A $ of the real numbers is said to be \textbf{inductive} if it contains the number $ 1 $, and if for every $ x  $ in $ A $, the number $ x + 1 $ is also in $ A $. Let $ \mathcal{A} $ be the collection of all inductive subsets of $ \RR $. Then the set $ \ZZ_+ $ of \textbf{positive integers} is defined by the equation:
+	\[ \ZZ_+ = \bigcap_{A \in \mathcal{A}} A \]
+\end{defn}
+We observe that the set $ \RR_+ $ is inductive, since it has the element $ 1 $ and the property that $  x > 0 $ then $ x + 1 > 0 $, therefore $ \ZZ_+ \subset \RR_+ $
+Basic properties of $ \ZZ_+ $ are:
+\begin{itemize}
+	\item $ \ZZ_+ $ is inductive.
+	\item (Principle of Induction). If $ A $ is an inductive set of positive integers, then $ A = \ZZ_+ $
+\end{itemize}
+We define the set $ \ZZ $ of \textbf{integers} to be the set consisting of the positive integers and the number $ 0 $, and the negatives of the elements $ \ZZ_+ $. If $ n $ is a positive integer, we use the symbol $ S_n $ to denote the set of all positive integers less than $ n $; we call it a \textbf{section} of the positive integers. $ S_1 $ is empty, and $ S_{n+1} $ denotes the set of positive integers between $ 1 $ and $ n $, inclusive.
+
+\[ \set{1, \ldots, n} = S_{n+1} \]
+
+\begin{thm}[Well-ordering property]
+	Every nonempty subset of $ \ZZ_+ $ has a smallest element.
+\end{thm}
+\begin{proof}
+	We first prove that, for each $ n \in \ZZ_+ $ the following statement holds: \textit{Every nonempty subset of $ \set{1, \ldots, n} $ has a smallest element}.
+	Let $ A $ be the set of all positive integers $ n $ for which this statement holds, Then $ A $ contains $ 1 $, since if $ n = 1 $, the only nonempty subset of $ \set{1,\ldots,n} $ is the set $ 1 $ itself. Then supposing $ A $ contains $ n $, we show that contains $ n+1 $. So let $ C $ be a nonempty subset of $ \set{1, \ldots, n +1 } $. If $ C $ consists of the single element $ n+1 $ then that element is the smallest element of $ C $. Otherwise, consider the set $ C \cap \set{1, \ldots,n} $ which is nonempty. Because $ n \in A $, this set has a smallest element, which will automatically be the smallest element of $ C $ also. Thus, $ A $ is inductive, so we conclude that $  A = \ZZ_+ $; hence the statement is true for all $ n \in \ZZ_+ $.
+	
+	Now we prove the theorem. Suppose that $ D $ is a nonempty subset of $ \ZZ_+ $. Choose an element $ n $ of $ D $. Then the set $ D \cap \set{1, \ldots, n} $ is nonempty, so that $ A $ has a smallest element $ k $. Then $ k $ is automatically the smallest element of $ D $ as well.
+\end{proof}
+
+\begin{thm}[Strong induction principle]
+	Let $ A $ be a set of positive integers. Suppose that for each positive integer $ n $, the statement $ S_n \cap A $ implies the statement $ n \in A $. Then $ A = \ZZ_+ $
+\end{thm}
+
+\begin{proof}
+	If $ A $ does not equal all  of $ \ZZ_+ $, let $ n $ be the smallest positive integer that is not in $ A $. Then every positive integer less than $ n $ is in $ A $, so that $ S_n \subset A $. Our hypothesis implies that $ n \in A $, contrary to assumption.
+\end{proof}
+
+\subsubsection*{Exercise}
+\begin{exc}
+	Prove the following ``laws of algebra'' for: $ \RR  $.
+	\begin{itemize}
+		\item $ 0 \cdot x = 0 $
+	\end{itemize}
+\end{exc}
+\begin{sol}
+	\begin{itemize}
+		\item Using hint:
+		\begin{align*}
+		x\cdot x = (x + 0) \cdot x \\
+		x\cdot x = x \cdot x + 0 \cdot x
+		\end{align*}
+		by the property that $ x + y = x \implies y = 0 $ we conclude $ 0 \cdot x = 0 $
+	\end{itemize}
+\end{sol}
+\begin{exc}
+	\begin{itemize}
+		\item Show that if $ \mathcal{A} $ is a collection of inductive sets, then the intersection of the elements of $ \mathcal{A} $ is an inductive set.
+		\item Prove 
+		\begin{itemize}
+			\item $ \ZZ_+ $ is inductive.
+			\item (Principle of Induction). If $ A $ is an inductive set of positive integers, then $ A = \ZZ_+ $
+		\end{itemize}
+	\end{itemize}
+\end{exc}
+\begin{sol}
+	\begin{itemize}
+		\item Suppose that $ \mathcal{A} $ is a set of inductive sets, observe that since an inductive set has the element $ 1 $, then $ 1 $ is in the intersection of these sets, now suppose $ x  $ belongs to the intersection of the elements of $ \mathcal{A} $, so that $ x $ is in every of the inductive sets, since all of them are inductive, $ x+1 $ is also in all the sets, therefore in the intersection of $ \mathcal{A} $.
+		\item In a case by case scenario:
+		\begin{itemize}
+			\item By the above point $ \ZZ_+ $ is inductive.
+			\item Suppose that $ A $ is an inductive set of positive integers, then $ A \subset \ZZ $, and by being inductive $ Z \subset A $
+		\end{itemize}
+	\end{itemize}
+\end{sol}
+\begin{exc}
+	\begin{itemize}
+		\item Prove by induction that given $ n \in \ZZ_+$, every nonempty subset of $ \set{1, \ldots, n} $ has a largest element.
+		\item Explain why you cannot conclude from the above that every nonempty subset of $ \ZZ_+ $ has a largest element.
+		
+	\end{itemize}
+\end{exc}
+\begin{sol}
+	\item Let $ A $ be the set of all positive integers for which this statement holds. $ A $ contains $ 1 $ since the set $ \set{1} $ has only one subset itself, and it contains the largest element. Now consider $ C $ subset of $ \set{1, \ldots, n+1} $, if $ n+1 \in C $ , then $ C $ has already its largest element, now consider $ n + 1 \notin C$, so that $ C $ is a subset of $ \set{1,\ldots,n} $ and by induction hypothesis it has a largest element.
+	\item We are assuming that the set is contained in a set of the form $ \set{1, \ldots, n} $, but there are sets that are not contained in sets of that form.
+\end{sol}
+\begin{exc}
+	\begin{itemize}
+		\item Show that $ \RR $ has the greatest lower bound property.
+	\end{itemize}
+\end{exc}
+\begin{sol}
+	\begin{itemize}
+		\item Consider $ A $ subset of $ \RR $ that is bounded above, consider the set $ L = \set{x | x \geq a, \forall a \in A} $
+	\end{itemize}
+\end{sol}
